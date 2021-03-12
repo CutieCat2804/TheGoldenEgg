@@ -2,9 +2,17 @@
 
 [ext_resource path="res://Scenes/Level/HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/Ei.png" type="Texture" id=3]
-[ext_resource path="res://assets/Leben/Herz.png" type="Texture" id=4]
+[ext_resource path="res://assets/Leben/Herz.png" type="Texture" id=3]
+[ext_resource path="res://assets/Ei.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Level/PanelStyles.tres" type="StyleBox" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -15,14 +23,6 @@ size = 48
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 32
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 48
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 2 )
 
@@ -45,7 +45,7 @@ margin_top = -4.4527
 margin_right = 103.794
 margin_bottom = 109.547
 rect_scale = Vector2( 1.2, 1.2 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -56,7 +56,7 @@ margin_left = 84.0447
 margin_top = 51.8514
 margin_right = 103.045
 margin_bottom = 90.8514
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.929412, 0.756863, 0.0784314, 1 )
 text = "X"
 __meta__ = {
@@ -68,7 +68,7 @@ margin_left = 110.539
 margin_top = 40.0
 margin_right = 242.539
 margin_bottom = 161.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.929412, 0.756863, 0.0784314, 1 )
 text = "17/17
 "
@@ -94,7 +94,7 @@ margin_top = 40.601
 margin_right = 1275.19
 margin_bottom = 121.601
 rect_scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -104,7 +104,7 @@ margin_left = 1156.14
 margin_top = 51.851
 margin_right = 1175.14
 margin_bottom = 90.851
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -115,7 +115,7 @@ margin_left = 1120.38
 margin_top = 40.0
 margin_right = 1160.38
 margin_bottom = 99.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "3"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -128,7 +128,7 @@ margin_left = -68.0
 margin_top = 32.0
 margin_right = 68.0
 margin_bottom = 83.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "00:00:00"
 align = 1
 valign = 1

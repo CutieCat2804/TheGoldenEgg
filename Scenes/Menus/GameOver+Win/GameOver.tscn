@@ -1,25 +1,25 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scenes/Menus/RestartButton.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Menus/MenuButton.gd" type="Script" id=3]
-[ext_resource path="res://assets/Huhn/HuhnDead.png" type="Texture" id=4]
+[ext_resource path="res://assets/Huhn/HuhnDead.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Menus/GameOver+Win/MenuButton.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Menus/GameOver+Win/RestartButton.gd" type="Script" id=3]
+[ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="DynamicFont" id=3]
 size = 64
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="DynamicFont" id=5]
 size = 38
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [node name="GameOver" type="Control"]
 anchor_right = 1.0
@@ -61,7 +61,7 @@ custom_colors/font_color_hover = Color( 0.898039, 0.188235, 0.188235, 1 )
 custom_colors/font_color_pressed = Color( 0.898039, 0.188235, 0.188235, 1 )
 text = "Neustarten"
 flat = true
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -77,7 +77,7 @@ custom_colors/font_color_hover = Color( 0.898039, 0.188235, 0.188235, 1 )
 custom_colors/font_color_pressed = Color( 0.898039, 0.188235, 0.188235, 1 )
 text = "Hauptmenü"
 flat = true
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,6 +85,6 @@ __meta__ = {
 [node name="HuhnDead" type="Sprite" parent="."]
 position = Vector2( 609.396, 559.339 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 [connection signal="pressed" from="RestartButton" to="RestartButton" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="MenuButton" to="MenuButton" method="_on_MenuButton_pressed"]

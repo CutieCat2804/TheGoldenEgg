@@ -1,226 +1,215 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-01.png" type="Texture" id=1]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-02.png" type="Texture" id=2]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-05.png" type="Texture" id=3]
-[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-02.png" type="Texture" id=4]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen-04.png" type="Texture" id=5]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen-03.png" type="Texture" id=6]
-[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-03.png" type="Texture" id=7]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen_Zeichenfläche 1.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/Level/HUD.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Background/ParallaxBackground.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Coin/coin.tscn" type="PackedScene" id=12]
-[ext_resource path="res://TileMaps/SolidPlatforms.tres" type="TileSet" id=14]
-[ext_resource path="res://TileMaps/PassThroughPlatforms.tres" type="TileSet" id=15]
+[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-03.png" type="Texture" id=1]
+[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-01.png" type="Texture" id=2]
+[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-02.png" type="Texture" id=3]
+[ext_resource path="res://assets/background/Pflanzen/Pflanzen-04.png" type="Texture" id=4]
+[ext_resource path="res://assets/background/Pflanzen/Pflanzen_Zeichenfläche 1.png" type="Texture" id=5]
+[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-05.png" type="Texture" id=6]
+[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-02.png" type="Texture" id=7]
+[ext_resource path="res://assets/background/Pflanzen/Pflanzen-03.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Coin/coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Background/ParallaxBackground.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Level/HUD.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-04.png" type="Texture" id=13]
+[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-03.png" type="Texture" id=14]
+[ext_resource path="res://assets/background/Pflanzen/Pflanzen-02.png" type="Texture" id=15]
 [ext_resource path="res://Sounds/Its-Raining-Pixels.wav" type="AudioStream" id=16]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-03.png" type="Texture" id=17]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-04.png" type="Texture" id=18]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen-02.png" type="Texture" id=19]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-01.png" type="Texture" id=21]
+[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-01.png" type="Texture" id=17]
+[ext_resource path="res://TileMaps/SolidPlatforms.tres" type="TileSet" id=18]
+[ext_resource path="res://TileMaps/PassThroughPlatforms.tres" type="TileSet" id=19]
+[ext_resource path="res://Scenes/Level/Coins.gd" type="Script" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5216, 76.7195 )
 
-[node name="Level" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="ParallaxBackground" parent="Background" instance=ExtResource( 11 )]
+[node name="ParallaxBackground" parent="Background" instance=ExtResource( 10 )]
 
 [node name="Decoration" type="Node2D" parent="Background"]
 
 [node name="Bäume_Zeichenfläche 1-03" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 1936, 208 )
-texture = ExtResource( 17 )
+texture = ExtResource( 14 )
 
 [node name="Bäume_Zeichenfläche 1-05" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 2288, 208 )
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 
 [node name="Bäume_Zeichenfläche 1-04" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 576, 112 )
-texture = ExtResource( 18 )
+texture = ExtResource( 13 )
 
 [node name="Büsche_Zeichenfläche 1-01" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 208, 288 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Pflanzen-02" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 2096, 432 )
 z_index = 2
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 
 [node name="Pflanzen_Zeichenfläche 1" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 2176, 432.089 )
 z_index = 2
-texture = ExtResource( 8 )
+texture = ExtResource( 5 )
 
 [node name="Büsche_Zeichenfläche 1-02" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 1120, -290.523 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
 [node name="Büsche_Zeichenfläche 1-03" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 1232, -290.523 )
-texture = ExtResource( 7 )
+texture = ExtResource( 1 )
 
 [node name="Pflanzen-03" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 720, -432 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Bäume_Zeichenfläche 1-02" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 624, -578 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Bäume_Zeichenfläche 1-06" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 3504, -752 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Bäume_Zeichenfläche 1-01" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 4320, -560 )
-texture = ExtResource( 21 )
+texture = ExtResource( 17 )
 
 [node name="Büsche_Zeichenfläche 1-04" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 2880, -48 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Büsche_Zeichenfläche 1-05" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 2720, -243.175 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
 [node name="Pflanzen-04" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 3648, -528 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Pflanzen-05" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 4512, -336 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="Pflanzen-06" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 4288, 48 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Bäume_Zeichenfläche 1-07" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 3392, 32 )
-texture = ExtResource( 17 )
+texture = ExtResource( 14 )
 
 [node name="Pflanzen-07" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 3312, 240 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 
 [node name="Bäume_Zeichenfläche 1-08" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 7020.83, -68.8882 )
-texture = ExtResource( 21 )
+texture = ExtResource( 17 )
 
 [node name="Bäume_Zeichenfläche 1-09" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 7136, -635.238 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Bäume_Zeichenfläche 1-10" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 6032, -187.238 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Pflanzen-08" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 7261.68, -466.616 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Pflanzen-09" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 7760, 144 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 
 [node name="Büsche_Zeichenfläche 1-06" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 7584, 94.8108 )
 z_index = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 1 )
 
 [node name="Büsche_Zeichenfläche 1-07" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 7819.26, -289.122 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="Bäume_Zeichenfläche 1-11" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 5104, 16 )
-texture = ExtResource( 17 )
+texture = ExtResource( 14 )
 
 [node name="Bäume_Zeichenfläche 1-12" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 5568, -80 )
-texture = ExtResource( 18 )
+texture = ExtResource( 13 )
 
 [node name="Pflanzen-10" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 5200, 240 )
 z_index = 2
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 
 [node name="Pflanzen_Zeichenfläche 2" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 5008, 240 )
-texture = ExtResource( 8 )
+texture = ExtResource( 5 )
 
 [node name="Pflanzen_Zeichenfläche 3" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 5360, 144 )
 z_index = 2
-texture = ExtResource( 8 )
+texture = ExtResource( 5 )
 
 [node name="Büsche_Zeichenfläche 1-08" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 5648, 96 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
 [node name="Pflanzen-11" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 256, 48 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Pflanzen-12" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 322.997, 46.5017 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="Pflanzen-13" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 1280, 336 )
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 
 [node name="Bäume_Zeichenfläche 1-13" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 8098.03, -1133.52 )
-texture = ExtResource( 21 )
+texture = ExtResource( 17 )
 
 [node name="Pflanzen-14" type="Sprite" parent="Background/Decoration"]
 position = Vector2( 8271.97, -911.491 )
 z_index = 2
-texture = ExtResource( 19 )
+texture = ExtResource( 15 )
 
 [node name="TileMap Solid" type="TileMap" parent="."]
 position = Vector2( 1, 0 )
 scale = Vector2( 0.75, 0.75 )
-tile_set = ExtResource( 14 )
+tile_set = ExtResource( 18 )
 collision_layer = 2
 collision_mask = 17
 format = 1
-tile_data = PoolIntArray( -1179484, 0, 0, -1179482, 1, 0, -1179480, 1, 0, -1179478, 1, 0, -1179476, 2, 0, -458754, 4, 0, -327682, 4, 0, -196610, 4, 0, -65538, 4, 0, 65534, 4, 0, 196606, 4, 0, 327678, 4, 0, 262254, 536870922, 0, 262256, 6, 0, 262258, 6, 0, 262260, 6, 0, 262262, 6, 0, 262264, 7, 0, 262285, 8, 0, 262287, 6, 0, 262289, 6, 0, 262291, 6, 0, 262293, 6, 0, 262295, 6, 0, 262296, 6, 0, 262297, 6, 0, 262298, 6, 0, 262299, 6, 0, 262300, 6, 0, 262301, 6, 0, 262302, 6, 0, 262303, 6, 0, 262304, 6, 0, 262305, 6, 0, 262306, 6, 0, 262308, 7, 0, 458750, 4, 0, 393270, 8, 0, 393272, 6, 0, 393274, 6, 0, 393276, 6, 0, 393278, 6, 0, 393280, 6, 0, 393282, 6, 0, 393284, 6, 0, 393286, 7, 0, 393318, 8, 0, 393320, 6, 0, 393322, 6, 0, 393324, 6, 0, 393326, 4, 0, 393328, 4, 0, 393329, 4, 0, 393330, 4, 0, 393331, 4, 0, 393332, 4, 0, 393333, 4, 0, 393334, 4, 0, 393336, 5, 0, 393357, 3, 0, 393359, 4, 0, 393360, 4, 0, 393361, 4, 0, 393362, 4, 0, 393363, 4, 0, 393364, 4, 0, 393365, 4, 0, 393366, 4, 0, 393367, 4, 0, 393368, 4, 0, 393369, 4, 0, 393370, 4, 0, 393371, 4, 0, 393372, 4, 0, 393373, 4, 0, 393374, 4, 0, 393375, 4, 0, 393376, 4, 0, 393377, 4, 0, 393378, 4, 0, 393380, 5, 0, 589822, 4, 0, 524288, 6, 0, 524290, 6, 0, 524292, 6, 0, 524294, 6, 0, 524296, 6, 0, 524298, 7, 0, 524299, 7, 0, 524307, 8, 0, 524309, 6, 0, 524311, 6, 0, 524313, 6, 0, 524315, 6, 0, 524317, 7, 0, 524342, 3, 0, 524344, 4, 0, 524346, 4, 0, 524348, 4, 0, 524350, 4, 0, 524352, 4, 0, 524354, 4, 0, 524356, 4, 0, 524358, 5, 0, 524390, 3, 0, 524392, 4, 0, 524394, 4, 0, 524396, 4, 0, 524398, 4, 0, 524400, 4, 0, 524401, 4, 0, 524402, 4, 0, 524403, 4, 0, 524404, 4, 0, 524406, 4, 0, 524408, 5, 0, 524429, 3, 0, 524431, 4, 0, 524432, 4, 0, 524433, 4, 0, 524434, 4, 0, 524435, 4, 0, 524436, 4, 0, 524437, 4, 0, 524438, 4, 0, 524439, 4, 0, 524440, 4, 0, 524441, 4, 0, 524442, 4, 0, 524443, 4, 0, 524444, 4, 0, 524445, 4, 0, 524446, 4, 0, 524447, 4, 0, 524448, 4, 0, 524449, 4, 0, 524450, 4, 0, 524452, 5, 0, 589936, 4, 0, 589937, 4, 0, 589938, 4, 0, 589939, 4, 0, 589940, 4, 0, 589941, 4, 0, 589942, 4, 0, 589965, 3, 0, 589967, 4, 0, 589968, 4, 0, 589974, 4, 0, 589975, 4, 0, 589976, 4, 0, 589977, 4, 0, 589978, 4, 0, 589979, 4, 0, 589980, 4, 0, 589981, 4, 0, 589982, 4, 0, 589983, 4, 0, 589984, 4, 0, 589985, 4, 0, 720894, 4, 0, 655360, 4, 0, 655362, 4, 0, 655364, 4, 0, 655366, 4, 0, 655368, 4, 0, 655370, 5, 0, 655371, 5, 0, 655379, 3, 0, 655381, 4, 0, 655383, 4, 0, 655385, 4, 0, 655387, 4, 0, 655389, 5, 0, 655396, 8, 0, 655398, 6, 0, 655400, 6, 0, 655402, 6, 0, 655404, 6, 0, 655406, 6, 0, 655408, 7, 0, 655414, 3, 0, 655416, 4, 0, 655418, 4, 0, 655420, 4, 0, 655422, 4, 0, 655424, 4, 0, 655426, 4, 0, 655428, 4, 0, 655430, 5, 0, 655462, 3, 0, 655464, 4, 0, 655466, 4, 0, 655468, 4, 0, 655470, 4, 0, 655480, 5, 0, 655505, 4, 0, 655506, 4, 0, 655507, 4, 0, 655508, 4, 0, 655509, 4, 0, 655522, 4, 0, 655523, 4, 0, 655524, 5, 0, 721008, 4, 0, 721009, 4, 0, 721010, 4, 0, 721011, 4, 0, 721012, 4, 0, 721014, 4, 0, 721015, 4, 0, 721037, 3, 0, 721039, 4, 0, 721040, 4, 0, 721041, 4, 0, 721045, 4, 0, 721046, 4, 0, 721047, 4, 0, 721048, 4, 0, 721049, 4, 0, 721050, 4, 0, 721051, 4, 0, 721052, 4, 0, 721053, 4, 0, 721054, 4, 0, 721055, 4, 0, 721056, 4, 0, 721058, 4, 0, 721059, 4, 0, 851966, 4, 0, 786432, 4, 0, 786434, 4, 0, 786436, 4, 0, 786438, 4, 0, 786440, 4, 0, 786442, 5, 0, 786443, 5, 0, 786451, 3, 0, 786453, 4, 0, 786455, 4, 0, 786457, 4, 0, 786459, 4, 0, 786461, 5, 0, 786468, 3, 0, 786470, 4, 0, 786472, 4, 0, 786474, 4, 0, 786476, 4, 0, 786478, 4, 0, 786480, 5, 0, 786486, 3, 0, 786488, 4, 0, 786490, 4, 0, 786492, 4, 0, 786494, 4, 0, 786496, 4, 0, 786498, 4, 0, 786500, 4, 0, 786502, 5, 0, 786534, 3, 0, 786536, 4, 0, 786538, 4, 0, 786540, 4, 0, 786542, 4, 0, 786544, 4, 0, 786545, 4, 0, 786546, 4, 0, 786547, 4, 0, 786548, 4, 0, 786549, 4, 0, 786550, 4, 0, 786552, 5, 0, 786573, 3, 0, 786575, 4, 0, 786576, 4, 0, 786577, 4, 0, 786578, 4, 0, 786579, 4, 0, 786580, 4, 0, 786581, 4, 0, 786582, 4, 0, 786583, 4, 0, 786584, 4, 0, 786585, 4, 0, 786586, 4, 0, 786587, 4, 0, 786588, 4, 0, 786589, 4, 0, 786590, 4, 0, 786591, 4, 0, 786592, 4, 0, 786593, 4, 0, 786594, 4, 0, 786596, 5, 0 )
+tile_data = PoolIntArray( -1769474, 4, 0, -1638402, 4, 0, -1507330, 4, 0, -1376258, 4, 0, -1245186, 4, 0, -1114114, 4, 0, -1179484, 0, 0, -1179482, 1, 0, -1179480, 1, 0, -1179478, 1, 0, -1179476, 2, 0, -983042, 4, 0, -851970, 4, 0, -720898, 4, 0, -589826, 4, 0, -458754, 4, 0, -327682, 4, 0, -196610, 4, 0, -65538, 4, 0, 65534, 4, 0, 196606, 4, 0, 327678, 4, 0, 262254, 536870922, 0, 262256, 6, 0, 262258, 6, 0, 262260, 6, 0, 262262, 6, 0, 262264, 7, 0, 262285, 8, 0, 262287, 6, 0, 262289, 6, 0, 262291, 6, 0, 262293, 6, 0, 262295, 6, 0, 262296, 6, 0, 262297, 6, 0, 262298, 6, 0, 262299, 6, 0, 262300, 6, 0, 262301, 6, 0, 262302, 6, 0, 262303, 6, 0, 262304, 6, 0, 262305, 6, 0, 262306, 6, 0, 262308, 7, 0, 458750, 4, 0, 393270, 8, 0, 393272, 6, 0, 393274, 6, 0, 393276, 6, 0, 393278, 6, 0, 393280, 6, 0, 393282, 6, 0, 393284, 6, 0, 393286, 7, 0, 393318, 8, 0, 393320, 6, 0, 393322, 6, 0, 393324, 6, 0, 393326, 4, 0, 393328, 4, 0, 393329, 4, 0, 393330, 4, 0, 393331, 4, 0, 393332, 4, 0, 393333, 4, 0, 393334, 4, 0, 393336, 5, 0, 393357, 3, 0, 393359, 4, 0, 393360, 4, 0, 393361, 4, 0, 393362, 4, 0, 393363, 4, 0, 393364, 4, 0, 393365, 4, 0, 393366, 4, 0, 393367, 4, 0, 393368, 4, 0, 393369, 4, 0, 393370, 4, 0, 393371, 4, 0, 393372, 4, 0, 393373, 4, 0, 393374, 4, 0, 393375, 4, 0, 393376, 4, 0, 393377, 4, 0, 393378, 4, 0, 393380, 5, 0, 589822, 4, 0, 524288, 6, 0, 524290, 6, 0, 524292, 6, 0, 524294, 6, 0, 524296, 6, 0, 524298, 7, 0, 524299, 7, 0, 524307, 8, 0, 524309, 6, 0, 524311, 6, 0, 524313, 6, 0, 524315, 6, 0, 524317, 7, 0, 524342, 3, 0, 524344, 4, 0, 524346, 4, 0, 524348, 4, 0, 524350, 4, 0, 524352, 4, 0, 524354, 4, 0, 524356, 4, 0, 524358, 5, 0, 524390, 3, 0, 524392, 4, 0, 524394, 4, 0, 524396, 4, 0, 524398, 4, 0, 524400, 4, 0, 524401, 4, 0, 524402, 4, 0, 524403, 4, 0, 524404, 4, 0, 524406, 4, 0, 524408, 5, 0, 524429, 3, 0, 524431, 4, 0, 524432, 4, 0, 524433, 4, 0, 524434, 4, 0, 524435, 4, 0, 524436, 4, 0, 524437, 4, 0, 524438, 4, 0, 524439, 4, 0, 524440, 4, 0, 524441, 4, 0, 524442, 4, 0, 524443, 4, 0, 524444, 4, 0, 524445, 4, 0, 524446, 4, 0, 524447, 4, 0, 524448, 4, 0, 524449, 4, 0, 524450, 4, 0, 524452, 5, 0, 589936, 4, 0, 589937, 4, 0, 589938, 4, 0, 589939, 4, 0, 589940, 4, 0, 589941, 4, 0, 589942, 4, 0, 589965, 3, 0, 589967, 4, 0, 589968, 4, 0, 589974, 4, 0, 589975, 4, 0, 589976, 4, 0, 589977, 4, 0, 589978, 4, 0, 589979, 4, 0, 589980, 4, 0, 589981, 4, 0, 589982, 4, 0, 589983, 4, 0, 589984, 4, 0, 589985, 4, 0, 720894, 4, 0, 655360, 4, 0, 655362, 4, 0, 655364, 4, 0, 655366, 4, 0, 655368, 4, 0, 655370, 5, 0, 655371, 5, 0, 655379, 3, 0, 655381, 4, 0, 655383, 4, 0, 655385, 4, 0, 655387, 4, 0, 655389, 5, 0, 655396, 8, 0, 655398, 6, 0, 655400, 6, 0, 655402, 6, 0, 655404, 6, 0, 655406, 6, 0, 655408, 7, 0, 655414, 3, 0, 655416, 4, 0, 655418, 4, 0, 655420, 4, 0, 655422, 4, 0, 655424, 4, 0, 655426, 4, 0, 655428, 4, 0, 655430, 5, 0, 655462, 3, 0, 655464, 4, 0, 655466, 4, 0, 655468, 4, 0, 655470, 4, 0, 655480, 5, 0, 655505, 4, 0, 655506, 4, 0, 655507, 4, 0, 655508, 4, 0, 655509, 4, 0, 655522, 4, 0, 655523, 4, 0, 655524, 5, 0, 721008, 4, 0, 721009, 4, 0, 721010, 4, 0, 721011, 4, 0, 721012, 4, 0, 721014, 4, 0, 721015, 4, 0, 721037, 3, 0, 721039, 4, 0, 721040, 4, 0, 721041, 4, 0, 721045, 4, 0, 721046, 4, 0, 721047, 4, 0, 721048, 4, 0, 721049, 4, 0, 721050, 4, 0, 721051, 4, 0, 721052, 4, 0, 721053, 4, 0, 721054, 4, 0, 721055, 4, 0, 721056, 4, 0, 721058, 4, 0, 721059, 4, 0, 851966, 4, 0, 786432, 4, 0, 786434, 4, 0, 786436, 4, 0, 786438, 4, 0, 786440, 4, 0, 786442, 5, 0, 786443, 5, 0, 786451, 3, 0, 786453, 4, 0, 786455, 4, 0, 786457, 4, 0, 786459, 4, 0, 786461, 5, 0, 786468, 3, 0, 786470, 4, 0, 786472, 4, 0, 786474, 4, 0, 786476, 4, 0, 786478, 4, 0, 786480, 5, 0, 786486, 3, 0, 786488, 4, 0, 786490, 4, 0, 786492, 4, 0, 786494, 4, 0, 786496, 4, 0, 786498, 4, 0, 786500, 4, 0, 786502, 5, 0, 786534, 3, 0, 786536, 4, 0, 786538, 4, 0, 786540, 4, 0, 786542, 4, 0, 786544, 4, 0, 786545, 4, 0, 786546, 4, 0, 786547, 4, 0, 786548, 4, 0, 786549, 4, 0, 786550, 4, 0, 786552, 5, 0, 786573, 3, 0, 786575, 4, 0, 786576, 4, 0, 786577, 4, 0, 786578, 4, 0, 786579, 4, 0, 786580, 4, 0, 786581, 4, 0, 786582, 4, 0, 786583, 4, 0, 786584, 4, 0, 786585, 4, 0, 786586, 4, 0, 786587, 4, 0, 786588, 4, 0, 786589, 4, 0, 786590, 4, 0, 786591, 4, 0, 786592, 4, 0, 786593, 4, 0, 786594, 4, 0, 786596, 5, 0 )
 
 [node name="TileMap One-Way" type="TileMap" parent="."]
 scale = Vector2( 0.75, 0.75 )
-tile_set = ExtResource( 15 )
+tile_set = ExtResource( 19 )
 collision_layer = 2
 collision_mask = 17
 format = 1
 tile_data = PoolIntArray( -1179483, 0, 0, -1179481, 1, 0, -1179479, 1, 0, -1179477, 2, 0, -982886, 0, 0, -982884, 1, 0, -982882, 2, 0, -655290, 0, 0, -655288, 1, 0, -655286, 1, 0, -655284, 1, 0, -655282, 1, 0, -655280, 2, 0, -589678, 0, 0, -589676, 1, 0, -589674, 1, 0, -589672, 2, 0, -589665, 0, 0, -589663, 2, 0, -524278, 0, 0, -524276, 1, 0, -524274, 1, 0, -524272, 2, 0, -393154, 0, 0, -393152, 1, 0, -393150, 2, 0, -393131, 0, 0, -393129, 1, 0, -393127, 1, 0, -393125, 1, 0, -393123, 2, 0, -262124, 0, 0, -262122, 1, 0, -262120, 1, 0, -262118, 1, 0, -262116, 2, 0, -261985, 0, 0, -261983, 1, 0, -261981, 2, 0, -196554, 0, 0, -196552, 1, 0, -196550, 2, 0, -130980, 0, 0, -130978, 1, 0, -130976, 1, 0, -130974, 2, 0, -65383, 0, 0, -65381, 1, 0, -65380, 1, 0, -65379, 1, 0, -65377, 2, 0, 123, 0, 0, 125, 1, 0, 127, 2, 0, 135, 0, 0, 137, 2, 0, 65568, 0, 0, 65570, 1, 0, 65572, 1, 0, 65574, 2, 0, 65592, 0, 0, 65594, 1, 0, 65596, 1, 0, 65598, 1, 0, 65600, 1, 0, 65602, 1, 0, 65604, 2, 0, 131075, 0, 0, 131077, 1, 0, 131079, 2, 0, 131157, 0, 0, 131159, 1, 0, 131161, 2, 0, 196630, 0, 0, 196632, 1, 0, 196634, 2, 0, 327694, 0, 0, 327696, 2, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 10 )]
+[node name="Player" parent="." instance=ExtResource( 11 )]
 position = Vector2( 153.01, 303.593 )
-scale = Vector2( 1, 1 )
 collision_mask = 30
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-zoom = Vector2( 1.25, 1.25 )
-limit_left = 0
-limit_bottom = 600
-drag_margin_h_enabled = true
-smoothing_enabled = true
-drag_margin_left = 0.3
-drag_margin_right = 0.3
-editor_draw_limits = true
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 153.777, 303.738 )
@@ -238,63 +227,65 @@ shape = SubResource( 1 )
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2( 2.11893, 2.1189 )
+script = ExtResource( 20 )
 
-[node name="coin1" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin1" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 765.881, 189.881 )
 
-[node name="coin2" parent="Coins" instance=ExtResource( 12 )]
-position = Vector2( 637.881, -434.119 )
+[node name="coin2" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 605.881, -434.119 )
 
-[node name="coin3" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin3" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 765.881, -434.119 )
 
-[node name="coin4" parent="Coins" instance=ExtResource( 12 )]
-position = Vector2( 1759.79, 2.61203 )
+[node name="coin4" parent="Coins" instance=ExtResource( 9 )]
+position = Vector2( 1741.88, -2.1189 )
 
-[node name="coin5" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin5" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 2765.88, 237.881 )
 
-[node name="coin6" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin6" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 3037.88, 237.881 )
 
-[node name="coin7" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin7" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 3293.88, 237.881 )
 
-[node name="coin8" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin8" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 3117.88, -338.119 )
 
-[node name="coin9" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin9" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 4221.88, 45.8811 )
 
-[node name="coin10" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin10" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 5437.88, 141.881 )
 
-[node name="coin11" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin11" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 5725.88, 141.881 )
 
-[node name="coin12" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin12" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 8013.88, -914.119 )
 
-[node name="coin13" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin13" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 6573.88, -50.1189 )
 
-[node name="coin14" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin14" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 7853.88, 141.881 )
 
-[node name="coin15" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin15" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 8221.88, -914.119 )
 
-[node name="coin16" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin16" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 7533.88, -770.119 )
 
-[node name="coin17" parent="Coins" instance=ExtResource( 12 )]
+[node name="coin17" parent="Coins" instance=ExtResource( 9 )]
 position = Vector2( 7677.88, 141.881 )
 
-[node name="HUD" parent="." instance=ExtResource( 9 )]
+[node name="HUD" parent="." instance=ExtResource( 12 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
-volume_db = 5.0
+volume_db = -10.0
+autoplay = true
 [connection signal="looseLife" from="Player" to="HUD" method="_on_Player_looseLife"]
 [connection signal="body_entered" from="FallZone" to="Player" method="_on_FallZone_body_entered"]
 [connection signal="coin_collected" from="Coins/coin1" to="HUD" method="_on_coin_collected"]
@@ -314,3 +305,4 @@ volume_db = 5.0
 [connection signal="coin_collected" from="Coins/coin15" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin16" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin17" to="HUD" method="_on_coin_collected"]
+[connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]

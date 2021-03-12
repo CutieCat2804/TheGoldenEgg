@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 signal looseLife
 
-onready var Globals = get_node("/root/Globals")
 onready var deathTimer = get_node("DeathTimer")
 
 # velocity bestimmt die Position des Players
@@ -85,8 +84,8 @@ func _on_FallZone_body_entered(body):
 	yield(deathTimer, "timeout") 
 	# checkt ob Leben = 1 ist| gleich 1, weil Leben erst danach durch das Signal auf null gesetzt wird
 	if Globals.life == 1:		
-		Globals.resetLife()
-		get_tree().change_scene("res://Scenes/Menus/GameOver.tscn")
+		Globals.reset()
+		get_tree().change_scene("res://Scenes/Menus/GameOver+Win/GameOver.tscn")
 	else:
 		# setzt die Player(self) Position auf die Position der Position2D Node zurück
 		self.position = get_parent().get_node("Position2D").position

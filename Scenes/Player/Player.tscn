@@ -19,14 +19,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "jump",
 "speed": 5.0
 } ]
 
@@ -36,7 +36,6 @@ height = 47.4653
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -0.707108 )
-scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -56,3 +55,14 @@ shape = SubResource( 2 )
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = 3.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.25, 1.25 )
+limit_left = 0
+limit_bottom = 600
+drag_margin_h_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.3
+drag_margin_right = 0.3
+editor_draw_limits = true

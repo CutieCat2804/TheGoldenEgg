@@ -1,31 +1,31 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Scenes/Menus/PlayButton.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Menus/HighscoreLabel.gd" type="Script" id=2]
-[ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/Ei.png" type="Texture" id=4]
-[ext_resource path="res://assets/background/Background/Berge1.png" type="Texture" id=5]
-[ext_resource path="res://assets/background/Background/Berge2.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Menus/TitleMenu/PlayButton.gd" type="Script" id=1]
+[ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/Menus/TitleMenu/DoubleJumpButton.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Menus/TitleMenu/HighscoreLabel.gd" type="Script" id=4]
+[ext_resource path="res://assets/Ei.png" type="Texture" id=5]
+[ext_resource path="res://assets/background/Background/Berge1.png" type="Texture" id=6]
 [ext_resource path="res://assets/background/Background/Berge3.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/Menus/DoubleJumpButton.gd" type="Script" id=8]
+[ext_resource path="res://assets/background/Background/Berge2.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
-font_data = ExtResource( 3 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="DynamicFont" id=3]
-size = 64
-font_data = ExtResource( 3 )
+size = 48
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 28
-font_data = ExtResource( 3 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 32
-font_data = ExtResource( 3 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -37,7 +37,7 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 32
-font_data = ExtResource( 3 )
+font_data = ExtResource( 2 )
 
 [node name="TitleMenu " type="Control"]
 anchor_right = 1.0
@@ -56,9 +56,9 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="."]
 margin_left = -1.0
-margin_top = 47.3792
+margin_top = 46.0443
 margin_right = 1279.0
-margin_bottom = 167.38
+margin_bottom = 166.045
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
 text = "The Golden Egg"
@@ -76,20 +76,20 @@ texture = ExtResource( 7 )
 [node name="Berge2" type="Sprite" parent="."]
 position = Vector2( 479.585, 584.7 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Berge1" type="Sprite" parent="."]
 position = Vector2( 478.441, 631.199 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Ei" type="Sprite" parent="."]
 position = Vector2( 194.965, 107.344 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="Ei2" type="Sprite" parent="."]
 position = Vector2( 1092.02, 107.344 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="PlayButton" type="Button" parent="."]
 margin_left = 0.155884
@@ -101,7 +101,7 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.764706, 0.4, 1 )
 custom_colors/font_color_hover = Color( 0.976471, 0.694118, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.694118, 0.196078, 1 )
-text = "PLAY"
+text = "Levelauswahl"
 flat = true
 script = ExtResource( 1 )
 __meta__ = {
@@ -117,7 +117,7 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
 text = "Highscore"
 align = 1
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -150,7 +150,7 @@ custom_colors/font_color_hover = Color( 0.976471, 0.694118, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.694118, 0.196078, 1 )
 text = "Doppelsprung aktivieren "
 flat = true
-script = ExtResource( 8 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

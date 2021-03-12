@@ -1,11 +1,13 @@
 extends CanvasLayer
 
+signal coinCount
+
 var coins = 0
 
 # holt sich den Timer aus dem NodeTree
 onready var winningTimer = get_node("WinningTimer")
 onready var timerLabel = get_node("TimerLabel")
-onready var Globals = get_node("/root/Globals")
+onready var hud = get_node(".")
 
 var ms = 0
 var s = 0
@@ -15,7 +17,9 @@ var score = 0
 # wird ausgeführt, wenn die Node geladen wird
 # setzt den Text des Labels am Anfang auf 0|Konvertiert Number zu String
 func _ready():
-	$Coins.text = String(coins) + "/17"
+	if Globals.coinCount == 0:
+		emit_signal("coinCount")
+	$Coins.text = String(coins) + "/" + String(Globals.coinCount)
 	$Life.text = String(Globals.life)
 	
 
@@ -34,14 +38,14 @@ func _physics_process(delta):
 	timerLabel.text = str(m) + ":" + str(s) + ":0" + str(ms)
 	
 	# reseted das Spiel, wenn der Player vier Coins eingesammelt
-	if coins == 16 :
+	if coins == Globals.coinCount - 1:
 		# setzt Timer damit Winning Screen erst nach kurzem kommt
 		winningTimer.set_wait_time(0.5)
 		winningTimer.start() # startet den Timer
 		yield(winningTimer, "timeout") # wartet bis Timer ausläuft
 		# wird erst ausgeführt, wenn timer abgelaufen ist
-		Globals.resetLife()
-		get_tree().change_scene("res://Scenes/Menus/WinScreen.tscn")
+		Globals.reset()
+		get_tree().change_scene("res://Scenes/Menus/GameOver+Win/WinScreen.tscn")
 		
 		# checkt, ob jetziger score besser ist als der vorherige Highscore
 		score = timerLabel.text

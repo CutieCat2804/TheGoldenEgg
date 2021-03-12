@@ -1,7 +1,5 @@
 extends Label
 
-# holt sich die GLobals
-onready var Globals = get_node("/root/Globals")
 # holt sich das HighscoreLabel
 onready var highscoreLabel = get_node(".")
 

@@ -6,7 +6,7 @@
 points = PoolVector2Array( 0, 0, 128, 0, 128, 136, 0, 136 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 128, 32, 0, 32, 0, 0, 128, 0 )
+points = PoolVector2Array( 136, 32, 8, 32, 8, 0, 136, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 128, 32, 0, 32, 0, 0, 128, 0 )
@@ -33,7 +33,7 @@ points = PoolVector2Array( 0, 0, 0, 0, 128, 0, 128, 32, 128, 40, 104, 40, 104, 1
 points = PoolVector2Array( 128, 0, 128, 136, 24, 136, 24, 128, 24, 40, 0, 40, 0, 0, 0, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=11]
-points = PoolVector2Array( 0, 0, 128, 0, 128, 136, 0, 136 )
+points = PoolVector2Array( 8, 0, 136, 0, 136, 136, 8, 136 )
 
 [resource]
 3/name = "Platformes.png 3"

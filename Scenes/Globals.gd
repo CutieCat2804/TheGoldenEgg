@@ -6,8 +6,9 @@ var s
 var ms
 
 var doubleJumpActive
-
 var life
+var level
+var coinCount
 
 func _ready():
 	highscore = "-------"
@@ -15,7 +16,8 @@ func _ready():
 	s = 100
 	ms = 100
 	doubleJumpActive = false
-	life = 3
+	reset()
 
-func resetLife():
+func reset():
 	life = 3
+	coinCount = 0

@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/background/Background/Berge1.png" type="Texture" id=12]
+[ext_resource path="res://assets/background/Background/GrassBackground2.png" type="Texture" id=13]
+[ext_resource path="res://assets/background/Background/Berge2.png" type="Texture" id=15]
+[ext_resource path="res://assets/background/Background/DirtBackground.png" type="Texture" id=16]
+[ext_resource path="res://assets/background/Background/BlueSkyBackground.png" type="Texture" id=17]
+[ext_resource path="res://assets/background/Background/Berge3.png" type="Texture" id=18]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="BlueSky" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 4097, 1200 )
+
+[node name="Sprite" type="Sprite" parent="BlueSky"]
+position = Vector2( -17.9877, -1464.21 )
+scale = Vector2( 1, 2.25555 )
+texture = ExtResource( 17 )
+centered = false
+
+[node name="Berge3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.6, 0.6 )
+motion_mirroring = Vector2( 3073.5, 0 )
+
+[node name="Sprite" type="Sprite" parent="Berge3"]
+position = Vector2( 192.333, -243.92 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="Berge2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_mirroring = Vector2( 3071.25, 0 )
+
+[node name="Sprite" type="Sprite" parent="Berge2"]
+position = Vector2( -299.813, -222.8 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 15 )
+centered = false
+
+[node name="Berge1" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 3072.75, 0 )
+
+[node name="Sprite" type="Sprite" parent="Berge1"]
+position = Vector2( 0, -17.646 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 12 )
+centered = false
+
+[node name="Dirt" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 4095, 0 )
+
+[node name="Sprite" type="Sprite" parent="Dirt"]
+position = Vector2( -96, 384 )
+scale = Vector2( 1, 2.15449 )
+texture = ExtResource( 16 )
+centered = false
+
+[node name="Grass" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 4096, 0 )
+
+[node name="Sprite" type="Sprite" parent="Grass"]
+position = Vector2( 0, 384 )
+scale = Vector2( 1, 0.664608 )
+texture = ExtResource( 13 )
+centered = false
+
+[node name="ParallaxBackground" type="Node2D" parent="."]

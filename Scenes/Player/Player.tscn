@@ -36,6 +36,7 @@ height = 47.4653
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -0.707108 )
+collision_mask = 23
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -54,7 +55,7 @@ shape = SubResource( 2 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = 3.0
+volume_db = -20.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

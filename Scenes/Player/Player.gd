@@ -14,27 +14,30 @@ const JUMPFORCE = -1100
 var jump_count = 0
 var on_ground = false
 
+var gotHurt = false
+
 # beinhaltet alles, was sechzig Mal pro Sekunde ausgeführt werden soll (z.B Bewegung)
 func _physics_process(delta):
-	# right und left selbst erstellter Input
-	# Input Tasten ändern: Project - Input Map - Add New Action - Press Plus - Bind Key
-	# Sprite.play() setzt die Animation|Sprite.flip_h flippt die Animation
-	if Input.is_action_pressed("right"):
-		velocity.x = SPEED
-		$Sprite.flip_h = false
-		if is_on_floor():
-			$Sprite.play("walk")
-	elif Input.is_action_pressed("left"):
-		velocity.x = -SPEED
-		$Sprite.flip_h = true
-		if is_on_floor():
-			$Sprite.play("walk")
-	else:
-		if is_on_floor():
-			$Sprite.play("idle")
-		
-	if not is_on_floor():
-		$Sprite.play("jump")
+	if gotHurt == false:
+		# right und left selbst erstellter Input
+		# Input Tasten ändern: Project - Input Map - Add New Action - Press Plus - Bind Key
+		# Sprite.play() setzt die Animation|Sprite.flip_h flippt die Animation
+		if Input.is_action_pressed("right"):
+			velocity.x = SPEED
+			$Sprite.flip_h = false
+			if is_on_floor():
+				$Sprite.play("walk")
+		elif Input.is_action_pressed("left"):
+			velocity.x = -SPEED
+			$Sprite.flip_h = true
+			if is_on_floor():
+				$Sprite.play("walk")
+		else:
+			if is_on_floor():
+				$Sprite.play("idle")
+			
+		if not is_on_floor():
+			$Sprite.play("jump")
 		
 	# Lässt den Player fallen|Je länger er fällt desto schneller fällt er
 	velocity.y += GRAVITY
@@ -74,10 +77,22 @@ func _physics_process(delta):
 	# Spieler bleibt durch diese Funktion langsam wieder stehen
 	velocity.x = lerp(velocity.x,0,0.1)
 
+func _on_Enemy_playerGotHurt():
+	velocity.y = -700
+	$CollisionShape2D.disabled = true
+	$Sprite.play("idle")
+	self.collision_mask = 0
+	self.collision_layer = 0
+	playerDeath()
+
 # Wenn die FallZone (Area2D) betreten wird, also man runterfällt, wird die Szene reseted
+func _on_FallZone_body_entered(body):
+	playerDeath()
+	
 # get_tree() gibt den Szenenbaum, wo sich die Node drin befindet zurück
 # mit change_scene wird dann die Szene zu der der Player wechseln soll ausgewählt
-func _on_FallZone_body_entered(body):
+func playerDeath():
+	gotHurt = true
 	$DeathSound.play()
 	deathTimer.set_wait_time(1)
 	deathTimer.start() 
@@ -89,5 +104,9 @@ func _on_FallZone_body_entered(body):
 	else:
 		# setzt die Player(self) Position auf die Position der Position2D Node zurück
 		self.position = get_parent().get_node("Position2D").position
+		$CollisionShape2D.disabled = false
+		self.collision_mask = 23
+		self.collision_layer = 1
+		gotHurt = false
 		# sendet Signal an das HUD, um dort das Leben richtig anzuzeigen
 		emit_signal("looseLife")

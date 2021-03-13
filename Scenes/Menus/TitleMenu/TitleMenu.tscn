@@ -92,10 +92,10 @@ position = Vector2( 1092.02, 107.344 )
 texture = ExtResource( 5 )
 
 [node name="PlayButton" type="Button" parent="."]
-margin_left = 0.155884
-margin_top = 198.283
-margin_right = 1280.16
-margin_bottom = 282.283
+anchor_left = 0.380078
+anchor_top = 0.286111
+anchor_right = 0.619922
+anchor_bottom = 0.402778
 custom_styles/focus = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.764706, 0.4, 1 )
@@ -105,7 +105,7 @@ text = "Levelauswahl"
 flat = true
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="HighscoreLabel" type="Label" parent="."]

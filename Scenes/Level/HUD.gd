@@ -7,7 +7,6 @@ var coins = 0
 # holt sich den Timer aus dem NodeTree
 onready var winningTimer = get_node("WinningTimer")
 onready var timerLabel = get_node("TimerLabel")
-onready var hud = get_node(".")
 
 var ms = 0
 var s = 0

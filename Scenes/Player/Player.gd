@@ -37,7 +37,7 @@ func _physics_process(delta):
 		$Sprite.play("jump")
 		
 	# Lässt den Player fallen|Je länger er fällt desto schneller fällt er
-	velocity.y = velocity.y + GRAVITY
+	velocity.y += GRAVITY
 	
 	# guckt ob Spieler auf dem Boden
 	# setzt die Variablen, damit Player nicht beim fallen springen kann

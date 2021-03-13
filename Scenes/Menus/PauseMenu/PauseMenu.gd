@@ -12,7 +12,7 @@ func _ready():
 
 func _input(event):
 	# Pause Menu öffnet sich nur in der Level Szene
-	if get_tree().current_scene.name == Globals.level:
+	if get_tree().current_scene.name == Globals.levelName:
 		# checkt ob Escape gedrückt wurde
 		if event.is_action_pressed("pause"):
 			$Overlay.visible = !$Overlay.visible

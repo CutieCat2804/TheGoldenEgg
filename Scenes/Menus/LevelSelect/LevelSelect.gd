@@ -4,6 +4,7 @@ func _ready():
 	$DoubleJumpLabel.text = ""
 	
 func _on_Level_pressed(name: String, doubleJumpRequired: bool):
+	Globals.levelName = name
 	if doubleJumpRequired == true && Globals.doubleJumpActive == true:
 		Globals.level = "res://Scenes/Level/"+ name +".tscn"
 		get_tree().change_scene(Globals.level)

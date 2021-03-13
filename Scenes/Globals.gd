@@ -9,6 +9,7 @@ var doubleJumpActive
 var life
 var level
 var coinCount
+var levelName
 
 func _ready():
 	highscore = "-------"

@@ -1,34 +1,62 @@
 extends KinematicBody2D
 
 signal looseLife
+signal respawnJetpack
+signal changeCheckpointSprite
 
 onready var deathTimer = get_node("DeathTimer")
 
-# velocity bestimmt die Position des Players
-var velocity = Vector2(0,0)
-var coins = 0
 const SPEED = 300
 const GRAVITY = 35
 const JUMPFORCE = -1100
+const JUMPFORCEJETPACK = -2300
 
+const FANSPEED = 200
+const TOWARDSFANSPEED = 75
+const AWAYFANSPEED = 275
+
+var velocity = Vector2(0,0)
+var coins = 0
 var jump_count = 0
 var on_ground = false
-
 var gotHurt = false
+var item = "none"
+var usedJetpack = true
 
-# beinhaltet alles, was sechzig Mal pro Sekunde ausgeführt werden soll (z.B Bewegung)
+onready var playerSpawnpoint = get_parent().get_node("Position2D").position
+
+var playerEnteredFan = false
+
 func _physics_process(delta):
 	if gotHurt == false:
 		# right und left selbst erstellter Input
 		# Input Tasten ändern: Project - Input Map - Add New Action - Press Plus - Bind Key
 		# Sprite.play() setzt die Animation|Sprite.flip_h flippt die Animation
+		respawnJetpack()
+		
+		if !playerEnteredFan:		
+			if Input.is_action_pressed("right"):
+				velocity.x = SPEED		
+			elif Input.is_action_pressed("left"):
+				velocity.x = -SPEED
+				
+			if Input.is_action_just_pressed("fly") and is_on_floor() and item == "Jetpack" and usedJetpack == false:
+				velocity.y = JUMPFORCEJETPACK	
+		else:
+			velocity.x = FANSPEED
+			velocity.y = -GRAVITY
+			if Input.is_action_pressed("right"):
+				velocity.x = AWAYFANSPEED		
+			elif Input.is_action_pressed("left"):
+				velocity.x = -TOWARDSFANSPEED
+		
+		# Animationen
+	if item == "none":		
 		if Input.is_action_pressed("right"):
-			velocity.x = SPEED
 			$Sprite.flip_h = false
 			if is_on_floor():
 				$Sprite.play("walk")
 		elif Input.is_action_pressed("left"):
-			velocity.x = -SPEED
 			$Sprite.flip_h = true
 			if is_on_floor():
 				$Sprite.play("walk")
@@ -36,9 +64,29 @@ func _physics_process(delta):
 			if is_on_floor():
 				$Sprite.play("idle")
 			
-		if not is_on_floor():
+		if not is_on_floor() :
 			$Sprite.play("jump")
-		
+
+	elif item == "Jetpack":
+		if Input.is_action_pressed("right"):
+			$Sprite.flip_h = false
+			if is_on_floor():
+				$Sprite.play("walkJetpack")
+		elif Input.is_action_pressed("left"):
+			$Sprite.flip_h = true
+			if is_on_floor():
+				$Sprite.play("walkJetpack")
+		else:
+			if is_on_floor():
+				$Sprite.play("idleJetpack")
+			
+		if not is_on_floor() and not usedJetpack:
+			$Sprite.play("jumpJetpack")
+			
+		if Input.is_action_just_pressed("fly") and is_on_floor():
+			$Sprite.play("flyJetpack")
+			usedJetpack = true
+			
 	# Lässt den Player fallen|Je länger er fällt desto schneller fällt er
 	velocity.y += GRAVITY
 	
@@ -77,6 +125,9 @@ func _physics_process(delta):
 	# Spieler bleibt durch diese Funktion langsam wieder stehen
 	velocity.x = lerp(velocity.x,0,0.1)
 
+	
+				
+# Signal vom Enemy aus
 func _on_Enemy_playerGotHurt():
 	velocity.y = -700
 	$CollisionShape2D.disabled = true
@@ -85,6 +136,7 @@ func _on_Enemy_playerGotHurt():
 	self.collision_layer = 0
 	playerDeath()
 
+# Signal von der FallZone  aus
 # Wenn die FallZone (Area2D) betreten wird, also man runterfällt, wird die Szene reseted
 func _on_FallZone_body_entered(body):
 	playerDeath()
@@ -103,10 +155,34 @@ func playerDeath():
 		get_tree().change_scene("res://Scenes/Menus/GameOver+Win/GameOver.tscn")
 	else:
 		# setzt die Player(self) Position auf die Position der Position2D Node zurück
-		self.position = get_parent().get_node("Position2D").position
+		self.position = playerSpawnpoint
 		$CollisionShape2D.disabled = false
-		self.collision_mask = 23
+		self.collision_mask = 62
 		self.collision_layer = 1
 		gotHurt = false
 		# sendet Signal an das HUD, um dort das Leben richtig anzuzeigen
 		emit_signal("looseLife")
+		
+		usedJetpack = true
+		respawnJetpack()
+		
+		
+
+
+func _on_Jetpack_jetpack_collected():
+	usedJetpack = false
+	item = "Jetpack"
+	
+func respawnJetpack():
+	if item == "Jetpack" and usedJetpack == true:
+		if is_on_floor():
+			item = "none"
+			emit_signal("respawnJetpack")
+
+
+func _on_Checkpoint_checkpointChecked():
+	playerSpawnpoint = self.position
+
+
+func _on_Fan_playerEnteredFan(_playerEnteredFan):
+	playerEnteredFan = _playerEnteredFan

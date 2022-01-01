@@ -33,8 +33,9 @@ func _physics_process(delta):
 	if s > 59 :
 		m += 1
 		s = 0
+	
 		
-	timerLabel.text = str(m) + ":" + str(s) + ":0" + str(ms)
+	timerLabel.text = ("0" + str(m) if str(m).length() == 1  else str(s)) + ":" + ("0" + str(s) if str(s).length() == 1  else str(s)) + ":0" + str(ms)
 	
 	# reseted das Spiel, wenn der Player vier Coins eingesammelt
 	if coins == Globals.coinCount - 1:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/JetpackSound.ogg-e111c3bc6b39fd11f8b7cc816858406c.oggstr"
+
+[deps]
+
+source_file="res://Sounds/JetpackSound.ogg"
+dest_files=[ "res://.import/JetpackSound.ogg-e111c3bc6b39fd11f8b7cc816858406c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

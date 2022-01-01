@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/Jetpack/Jetpack_Zeichenfläche 1-01.png" type="Texture" id=1]
+[ext_resource path="res://assets/Jetpack/Jetpack_Zeichenfläche 1-03.png" type="Texture" id=2]
+[ext_resource path="res://assets/Jetpack/Jetpack_Zeichenfläche 1-02.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Items/Jetpack.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/JetpackSound.ogg" type="AudioStream" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "fly",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30.6748, 44.5868 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "bounce"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Jetpack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 10 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "collect"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Jetpack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -50 ), Vector2( 0, -25 ) ]
+}
+
+[node name="Jetpack" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Jetpack" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -3.1748, -3.53941 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bounce"
+anims/bounce = SubResource( 3 )
+anims/collect = SubResource( 4 )
+
+[node name="JetpackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -6,12 +6,12 @@ func _ready():
 	pass
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	$AnimationPlayer.play("collect")
 	$JetpackSound.play()
 	$Area2D.set_collision_layer_bit(3, false)
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	emit_signal("jetpack_collected")
 	self.visible = false
 

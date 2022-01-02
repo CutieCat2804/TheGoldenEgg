@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 signal looseLife
 signal respawnJetpack
-signal changeCheckpointSprite
 
 onready var deathTimer = get_node("DeathTimer")
 
@@ -27,7 +26,7 @@ onready var playerSpawnpoint = get_parent().get_node("Position2D").position
 
 var playerEnteredFan = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if gotHurt == false:
 		# right und left selbst erstellter Input
 		# Input Tasten ändern: Project - Input Map - Add New Action - Press Plus - Bind Key
@@ -130,7 +129,7 @@ func _physics_process(delta):
 # Signal vom Enemy aus
 func _on_Enemy_playerGotHurt():
 	velocity.y = -700
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled", true)
 	$Sprite.play("idle")
 	self.collision_mask = 0
 	self.collision_layer = 0
@@ -138,7 +137,7 @@ func _on_Enemy_playerGotHurt():
 
 # Signal von der FallZone  aus
 # Wenn die FallZone (Area2D) betreten wird, also man runterfällt, wird die Szene reseted
-func _on_FallZone_body_entered(body):
+func _on_FallZone_body_entered(_body):
 	playerDeath()
 	
 # get_tree() gibt den Szenenbaum, wo sich die Node drin befindet zurück
@@ -152,11 +151,12 @@ func playerDeath():
 	# checkt ob Leben = 1 ist| gleich 1, weil Leben erst danach durch das Signal auf null gesetzt wird
 	if Globals.life == 1:		
 		Globals.reset()
-		get_tree().change_scene("res://Scenes/Menus/GameOver+Win/GameOver.tscn")
+		if get_tree().change_scene("res://scenes/menu/gameOverAndWin/gameOver.tscn") != OK:
+			print("An unexpected error occured when trying to switch to the gameOver scene")
 	else:
 		# setzt die Player(self) Position auf die Position der Position2D Node zurück
 		self.position = playerSpawnpoint
-		$CollisionShape2D.disabled = false
+		$CollisionShape2D.set_deferred("disabled", false)
 		self.collision_mask = 62
 		self.collision_layer = 1
 		gotHurt = false

@@ -2,12 +2,13 @@
 
 [ext_resource path="res://assets/Checkpoint_Zeichenfläche 1-02.png" type="Texture" id=1]
 [ext_resource path="res://assets/Checkpoint_Zeichenfläche 1-01.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Checkpoint/Checkpoint.gd" type="Script" id=3]
+[ext_resource path="res://scenes/checkpoint/checkpoint.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 80.1132, 151.139 )
 
 [node name="Checkpoint" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true

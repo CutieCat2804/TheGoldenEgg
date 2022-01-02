@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scenes/Level/HUD.gd" type="Script" id=1]
+[ext_resource path="res://scenes/hud/hud.gd" type="Script" id=1]
 [ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Leben/Herz.png" type="Texture" id=3]
 [ext_resource path="res://assets/Ei.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Level/PanelStyles.tres" type="StyleBox" id=5]
+[ext_resource path="res://scenes/hud/panelStyles.tres" type="StyleBox" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

@@ -16,13 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="TheGoldenEgg"
-run/main_scene="res://Scenes/Menus/TitleMenu/TitleMenu.tscn"
+run/main_scene="res://scenes/menu/titleMenu/titleMenu.tscn"
 config/icon="res://assets/Ei.png"
 
 [autoload]
 
 Globals="*res://Scenes/Globals.gd"
-PauseMenu="*res://Scenes/Menus/PauseMenu/PauseMenu.tscn"
+PauseMenu="*res://scenes/menu/pauseMenu/pauseMenu.tscn"
 
 [display]
 

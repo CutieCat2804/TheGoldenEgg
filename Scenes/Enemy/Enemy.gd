@@ -14,7 +14,7 @@ func _ready():
 	# setzt die RayCast2D Position auf das linke oder rechte Ende des CollisionShapes2D
 	$floor_checker.position.x = FLOORCHECKERPOSITION * direction
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# checkt ob Enemy eine Wand berührt
 	if is_on_wall() or not $floor_checker.is_colliding() and is_on_floor():
 		# ändert die Richtung des Enemies
@@ -36,6 +36,6 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity,Vector2.UP)
 
 # Signal kommt von der Area2D, die den Damage checkt
-func _on_DamageChecker_body_entered(body):
+func _on_DamageChecker_body_entered(_body):
 	print("_on_DamageChecker_body_entered")
 	emit_signal("playerGotHurt")

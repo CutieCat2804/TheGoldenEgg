@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scenes/Menus/PauseMenu/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/menu/pauseMenu/pauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Buttons/ButtonBig.png" type="Texture" id=3]
 [ext_resource path="res://assets/Buttons/ButtonBigPressed.png" type="Texture" id=4]
@@ -33,10 +33,11 @@ region_rect = Rect2( 0, 0, 400, 140 )
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 400, 140 )
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="pauseMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Overlay" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

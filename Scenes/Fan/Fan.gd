@@ -18,8 +18,8 @@ func _on_Lever_leverIsPressed(isActive):
 		$Area2D.collision_layer = 0
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	emit_signal("playerEnteredFan", true)
 
-func _on_Area2D_body_exited(body):
+func _on_Area2D_body_exited(_body):
 	emit_signal("playerEnteredFan", false)

@@ -25,7 +25,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 4, 4 )
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( -20577149, 6, 0, -18348874, 7, 0, -17823771, 1, 0, -17759089, 10, 0, -15399603, 11, 0, -14612459, 11, 0, -11533458, 1, 0, -10156294, 3, 0, -9305954, 3, 0, -8387746, 12, 0, -8322161, 13, 0, -7994308, 0, 0, -7600361, 12, 0, -6750029, 13, 0, -5307289, 12, 0, -4194023, 8, 0, -4192349, 7, 0, -3931852, 9, 0, -3407191, 8, 0, -3013145, 3, 0, -261424, 7, 0, -129678, 6, 0, -63777, 0, 0, 918350, 4, 0, 918778, 4, 0, 1048656, 12, 0, 1114175, 13, 0, 1115183, 13, 0, 2164101, 8, 0, 2426728, 9, 0, 2688917, 11, 0, 2753852, 10, 0, 3014802, 6, 0, 4063714, 4, 0, 4260669, 11, 0, 4261141, 11, 0, 4326628, 10, 0, 4457016, 5, 0, 5242932, 7, 0, 5832771, 11, 0, 5833025, 11, 0, 7406093, 11, 0, 7471648, 10, 0 )
+tile_data = PoolIntArray( -20577149, 6, 0, -18348874, 7, 0, -17823771, 1, 0, -17759089, 10, 0, -15399603, 11, 0, -14612459, 11, 0, -11533458, 1, 0, -10156294, 3, 0, -9305954, 3, 0, -8387746, 12, 0, -8322161, 13, 0, -7928774, 0, 0, -7600361, 12, 0, -6750029, 13, 0, -5241754, 12, 0, -4194023, 8, 0, -4192349, 7, 0, -3931852, 9, 0, -3407191, 8, 0, -3013145, 3, 0, -261424, 7, 0, -129678, 6, 0, -63777, 0, 0, 918350, 4, 0, 918778, 4, 0, 1048656, 12, 0, 1114175, 13, 0, 1115183, 13, 0, 2164101, 8, 0, 2426728, 9, 0, 2688917, 11, 0, 2753852, 10, 0, 3014802, 6, 0, 4063714, 4, 0, 4260669, 11, 0, 4261141, 11, 0, 4326628, 10, 0, 4457016, 5, 0, 5242932, 7, 0, 5832771, 11, 0, 5833025, 11, 0, 7406093, 11, 0, 7471648, 10, 0 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 1, 0 )
@@ -121,8 +121,8 @@ position = Vector2( 5105.48, 206.094 )
 [connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]
 [connection signal="body_entered" from="FallZone" to="Player/Player" method="_on_FallZone_body_entered"]
 [connection signal="looseLife" from="Player/Player" to="HUD" method="_on_Player_looseLife"]
-[connection signal="respawnJetpack" from="Player/Player" to="Items/Jetpack1" method="_on_Player_respawnJetpack"]
 [connection signal="respawnJetpack" from="Player/Player" to="Items/Jetpack2" method="_on_Player_respawnJetpack"]
+[connection signal="respawnJetpack" from="Player/Player" to="Items/Jetpack1" method="_on_Player_respawnJetpack"]
 [connection signal="coin_collected" from="Coins/coin1" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin2" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin3" to="HUD" method="_on_coin_collected"]

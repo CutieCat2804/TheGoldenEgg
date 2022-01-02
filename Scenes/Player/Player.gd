@@ -25,6 +25,7 @@ var usedJetpack = true
 onready var playerSpawnpoint = get_parent().get_node("StartPosition").position
 
 var playerEnteredFan = false
+var fanDirection = 1
 
 func _physics_process(_delta):
 	if gotHurt == false:
@@ -43,12 +44,13 @@ func _physics_process(_delta):
 				velocity.y = JUMPFORCE_JETPACK	
 		else:
 			# setzt das Movement während Player im Fan ist
-			velocity.x = FAN_SPEED
+			velocity.x = FAN_SPEED * fanDirection
 			velocity.y = -GRAVITY
+			
 			if Input.is_action_pressed("right"):
-				velocity.x = AWAY_FAN_SPEED		
+				velocity.x = AWAY_FAN_SPEED	if fanDirection == 1 else TOWARDS_FAN_SPEED	
 			elif Input.is_action_pressed("left"):
-				velocity.x = -TOWARDS_FAN_SPEED
+				velocity.x = -TOWARDS_FAN_SPEED if fanDirection == 1 else -AWAY_FAN_SPEED
 		
 		# Animationen
 	if item == "none":		
@@ -182,5 +184,6 @@ func _on_Checkpoint_checkpointChecked():
 	playerSpawnpoint = self.position
 
 # Signal des Fans, was angibt, ob Player in der Area2D ist oder nicht
-func _on_Fan_playerEnteredFan(_playerEnteredFan):
+func _on_Fan_playerEnteredFan(_playerEnteredFan, _fanDirection):
 	playerEnteredFan = _playerEnteredFan
+	fanDirection = _fanDirection

@@ -9,7 +9,7 @@ var doubleJumpActive
 var life
 var level
 var coinCount
-var levelName
+var levelNumber
 
 func _ready():
 	highscore = "-------"
@@ -29,4 +29,10 @@ const LEVEL_SELECT = "res://scenes/menu/levelSelect/levelSelect.tscn"
 const GAME_OVER = "res://scenes/menu/gameOverAndWin/gameOver.tscn"
 
 func setLevel():
-	level = "res://scenes/level/"+ levelName +".tscn"
+	level = "res://scenes/level/level"+ str(levelNumber) +".tscn"
+
+var levelParameters = [
+		{ "doubleJump": false, "highscore": "-------", "parameters": "Jetpack" }, 
+		{ "doubleJump": true, "highscore": "-------", "parameters": "Gegnersteine" },
+		{ "doubleJump": false, "highscore": "-------", "parameters": "Ventilatoren + Schalter" }
+	]

@@ -3,6 +3,6 @@ extends Label
 # holt sich das HighscoreLabel
 onready var highscoreLabel = get_node(".")
 
-func _ready():
+func _process(delta):
 	# setzt den Label Text auf den Globals Highscore
-	highscoreLabel.text = Globals.highscore
+	highscoreLabel.text = Globals.levelParameters[Globals.levelNumber - 1]["highscore"] if Globals.levelNumber else "-------"

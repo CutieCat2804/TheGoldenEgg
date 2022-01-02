@@ -50,15 +50,15 @@ func _physics_process(_delta):
 		# checkt, ob jetziger score besser ist als der vorherige Highscore
 		score = timerLabel.text
 		if Globals.m > m :
-			Globals.highscore = score
+			Globals.levelParameters[Globals.levelNumber - 1]["highscore"] = score
 			setGlobals()
 		elif Globals.m == m:
 			if Globals.s > s :
-				Globals.highscore = score
+				Globals.levelParameters[Globals.levelNumber - 1]["highscore"] = score
 				setGlobals()
 			elif Globals.s == s :
 				if Globals.ms > ms :
-					Globals.highscore = score
+					Globals.levelParameters[Globals.levelNumber - 1]["highscore"] = score
 					setGlobals()
 
 # Wenn Player einen Coin aufsammelt, sendet coin.gd ein Signal, was diese Methode ausführt

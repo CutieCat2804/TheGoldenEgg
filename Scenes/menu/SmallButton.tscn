@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/buttons/buttons_Zeichenfläche 1-04.png" type="Texture" id=1]
 [ext_resource path="res://assets/buttons/buttons_Zeichenfläche 1-03.png" type="Texture" id=2]
 [ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/buttons/buttons-10.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -14,6 +15,10 @@ region_rect = Rect2( 0, 0, 206, 206 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 206, 206 )
+
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 200, 200 )
@@ -22,7 +27,7 @@ region_rect = Rect2( 0, 0, 200, 200 )
 size = 42
 font_data = ExtResource( 3 )
 
-[node name="Level1" type="Button"]
+[node name="SmallButton" type="Button"]
 anchor_left = -0.092
 anchor_top = 0.023
 anchor_right = -0.092
@@ -34,8 +39,10 @@ margin_bottom = 246.44
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )

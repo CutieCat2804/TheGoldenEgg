@@ -1,41 +1,32 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/egg/egg.png" type="Texture" id=2]
 [ext_resource path="res://assets/background/background/mountain1.png" type="Texture" id=3]
 [ext_resource path="res://assets/background/background/mountain3.png" type="Texture" id=4]
 [ext_resource path="res://assets/background/background/mountain2.png" type="Texture" id=5]
-[ext_resource path="res://assets/Buttons/buttons_Zeichenfläche 1-01.png" type="Texture" id=6]
-[ext_resource path="res://assets/Buttons/buttons_Zeichenfläche 1-02.png" type="Texture" id=7]
+[ext_resource path="res://scenes/menu/LargeButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/menu/titleMenu/highscoreLabel.gd" type="Script" id=7]
 [ext_resource path="res://scenes/menu/levelSelect/levelSelect.gd" type="Script" id=8]
-[ext_resource path="res://scenes/menu/levelSelect/levelButton.tscn" type="PackedScene" id=9]
-
-
-
+[ext_resource path="res://scenes/menu/SmallButton.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 400, 140 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 7 )
-region_rect = Rect2( 0, 0, 400, 140 )
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 400, 140 )
-
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -74,17 +65,32 @@ __meta__ = {
 }
 
 [node name="Level1" parent="." instance=ExtResource( 9 )]
+anchor_left = -0.142781
+anchor_top = 0.0216111
+anchor_right = -0.142781
+anchor_bottom = 0.0216111
 
 [node name="Level2" parent="." instance=ExtResource( 9 )]
-anchor_left = -0.555387
+anchor_left = -0.592891
 anchor_top = -0.225681
-anchor_right = -0.555387
+anchor_right = -0.592891
 anchor_bottom = -0.225681
 margin_left = 1350.9
 margin_top = 354.49
 margin_right = 1422.9
 margin_bottom = 424.49
 text = "2"
+
+[node name="Level3" parent="." instance=ExtResource( 9 )]
+anchor_left = -0.57961
+anchor_top = -0.224291
+anchor_right = -0.57961
+anchor_bottom = -0.224291
+margin_left = 1429.9
+margin_top = 353.49
+margin_right = 1501.9
+margin_bottom = 423.49
+text = "3"
 
 [node name="Berge3" type="Sprite" parent="."]
 position = Vector2( 490.275, 565.547 )
@@ -109,35 +115,71 @@ texture = ExtResource( 2 )
 position = Vector2( 884.02, 107.344 )
 texture = ExtResource( 2 )
 
+[node name="HighscoreTitle" type="Label" parent="."]
+visible = false
+margin_left = 944.0
+margin_top = 192.0
+margin_right = 1064.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
+text = "Highscore:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreLabel" type="Label" parent="."]
+visible = false
+margin_left = 1088.0
+margin_top = 192.0
+margin_right = 1148.0
+margin_bottom = 222.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
+text = "-------"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DoubleJumpLabel" type="Label" parent="."]
-anchor_left = 0.326953
-anchor_top = 0.384028
-anchor_right = 0.673047
-anchor_bottom = 0.438194
+visible = false
+anchor_left = 0.7375
+anchor_top = 0.4
+anchor_right = 1.07969
+anchor_bottom = 0.454167
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
-text = "Das Level benötigt einen Doppelsprung!"
+text = "Doppelsprung benötigt"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="MainMenuButton" type="Button" parent="."]
-margin_left = 20.735
-margin_top = 70.665
-margin_right = 182.735
-margin_bottom = 135.665
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-text = "Hauptmenü"
+[node name="ParametersLabel" type="Label" parent="."]
+visible = false
+margin_left = 944.0
+margin_top = 240.0
+margin_right = 1232.0
+margin_bottom = 270.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
+text = "Parameter"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Level1" to="." method="_on_Level_pressed" binds= [ "level1", false ]]
-[connection signal="pressed" from="Level2" to="." method="_on_Level_pressed" binds= [ "level2", true ]]
+
+[node name="MainMenuButton" parent="." instance=ExtResource( 6 )]
+text = "Hauptmenü"
+
+[node name="PlayButton" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 544.0
+margin_top = 288.0
+margin_right = 704.0
+margin_bottom = 353.0
+text = "Spielen"
+[connection signal="pressed" from="Level1" to="." method="_on_Level_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Level2" to="." method="_on_Level_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="Level3" to="." method="_on_Level_pressed" binds= [ 3 ]]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]

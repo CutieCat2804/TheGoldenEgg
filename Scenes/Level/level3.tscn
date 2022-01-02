@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/background/background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/fallzone.tscn" type="PackedScene" id=2]
@@ -6,29 +6,168 @@
 [ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/backgroundMusic.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tileMaps/grassTileMap.tres" type="TileSet" id=6]
+[ext_resource path="res://tileMaps/grassDecorationTileMap.tres" type="TileSet" id=7]
+[ext_resource path="res://scenes/lever/lever.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/fan/fan.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/coin/coins.gd" type="Script" id=10]
+[ext_resource path="res://scenes/coin/coin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/checkpoint/checkpoint.tscn" type="PackedScene" id=12]
 
 [node name="Level3" type="Node2D"]
 
-[node name="Background" type="Node2D" parent="."]
+[node name="BackgroundMusic" parent="." instance=ExtResource( 5 )]
 
-[node name="ParallaxBackground" parent="Background" instance=ExtResource( 1 )]
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
+
+[node name="Decoration" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 4, 4 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -17889706, 2, 0, -15072755, 6, 0, -14285509, 6, 0, -12057073, 7, 0, -11598756, 3, 0, -11533036, 12, 0, -11532729, 12, 0, -11467204, 13, 0, -11272015, 5, 0, -9108369, 10, 0, -8912437, 8, 0, -8388437, 11, 0, -8322599, 10, 0, -6159568, 4, 0, -5962418, 13, 0, -5503865, 9, 0, -5372122, 4, 0, -5176217, 11, 0, -4718541, 9, 0, -2882804, 12, 0, -2882195, 2, 0, -2619645, 7, 0, -1833805, 7, 0, -1440268, 3, 0, -1310531, 12, 0, -1245032, 13, 0, -1178435, 10, 0, -850887, 0, 0, 328385, 11, 0, 393882, 10, 0, 525725, 8, 0, 983363, 3, 0, 1050049, 12, 0, 1115744, 11, 0, 1901562, 13, 0, 2097745, 7, 0, 2294255, 0, 0, 2490431, 4, 0, 2883989, 8, 0, 3473713, 12, 0, 3473854, 13, 0, 5898320, 10, 0 )
 
 [node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.75, 0.75 )
 tile_set = ExtResource( 6 )
 format = 1
+tile_data = PoolIntArray( -1507330, 4, 0, -1376258, 4, 0, -1245186, 4, 0, -1245054, 11, 0, -1245052, 12, 0, -1245050, 13, 0, -1114114, 4, 0, -983042, 4, 0, -983000, 11, 0, -982998, 12, 0, -982996, 13, 0, -851970, 4, 0, -917398, 11, 0, -917396, 12, 0, -917394, 12, 0, -917392, 12, 0, -917390, 13, 0, -917376, 11, 0, -917374, 12, 0, -917372, 12, 0, -917370, 12, 0, -917368, 13, 0, -720898, 4, 0, -720810, 11, 0, -720808, 12, 0, -720806, 12, 0, -720804, 12, 0, -720802, 13, 0, -589826, 4, 0, -655360, 12, 0, -655358, 13, 0, -655347, 11, 0, -655345, 12, 0, -655343, 12, 0, -655341, 13, 0, -655327, 11, 0, -655325, 12, 0, -655323, 12, 0, -655321, 13, 0, -589722, 11, 0, -589720, 12, 0, -589718, 13, 0, -458754, 4, 0, -458642, 11, 0, -458640, 13, 0, -327682, 4, 0, -393124, 11, 0, -393122, 12, 0, -393120, 13, 0, -327677, 11, 0, -327675, 12, 0, -327673, 13, 0, -196610, 4, 0, -196545, 8, 0, -196543, 6, 0, -196541, 6, 0, -196539, 6, 0, -196537, 7, 0, -65538, 4, 0, -130933, 11, 0, -130931, 13, 0, -130925, 8, 0, -130923, 6, 0, -130921, 6, 0, -130919, 6, 0, -130917, 7, 0, -65525, 11, 0, -65523, 12, 0, -65521, 13, 0, -65473, 3, 0, -65471, 4, 0, -65469, 4, 0, -65467, 4, 0, -65465, 5, 0, -65442, 11, 0, -65440, 12, 0, -65438, 12, 0, -65436, 13, 0, 65534, 4, 0, 108, 8, 0, 110, 6, 0, 112, 6, 0, 114, 6, 0, 116, 10, 0, 147, 3, 0, 149, 4, 0, 151, 4, 0, 153, 4, 0, 155, 5, 0, 65590, 11, 0, 65592, 12, 0, 65594, 13, 0, 65599, 3, 0, 65601, 4, 0, 65603, 4, 0, 65605, 4, 0, 65607, 5, 0, 196606, 4, 0, 131180, 3, 0, 131182, 4, 0, 131184, 4, 0, 131186, 4, 0, 131188, 4, 0, 131190, 6, 0, 131192, 6, 0, 131194, 6, 0, 131196, 6, 0, 131198, 7, 0, 131205, 11, 0, 131207, 13, 0, 131219, 3, 0, 131221, 4, 0, 131223, 4, 0, 131225, 4, 0, 131227, 5, 0, 196612, 11, 0, 196614, 12, 0, 196616, 12, 0, 196618, 13, 0, 196671, 3, 0, 196673, 4, 0, 196675, 4, 0, 196677, 4, 0, 196679, 5, 0, 196692, 6, 0, 196694, 6, 0, 196696, 6, 0, 196698, 7, 0, 327678, 4, 0, 262191, 11, 0, 262193, 12, 0, 262195, 13, 0, 262252, 3, 0, 262254, 4, 0, 262256, 4, 0, 262258, 4, 0, 262260, 4, 0, 262262, 4, 0, 262264, 4, 0, 262266, 4, 0, 262268, 4, 0, 262270, 5, 0, 262291, 3, 0, 262293, 4, 0, 262295, 4, 0, 262297, 4, 0, 262299, 5, 0, 327702, 8, 0, 327704, 6, 0, 327706, 6, 0, 327708, 6, 0, 327710, 6, 0, 327712, 6, 0, 327714, 6, 0, 327716, 10, 0, 327743, 3, 0, 327745, 4, 0, 327747, 4, 0, 327749, 4, 0, 327751, 5, 0, 327760, 8, 0, 327762, 6, 0, 327764, 4, 0, 327766, 4, 0, 327768, 4, 0, 327770, 5, 0, 458750, 4, 0, 393324, 3, 0, 393326, 4, 0, 393328, 4, 0, 393330, 4, 0, 393332, 4, 0, 393334, 4, 0, 393336, 4, 0, 393338, 4, 0, 393340, 4, 0, 393342, 5, 0, 393363, 3, 0, 393365, 4, 0, 393367, 4, 0, 393369, 4, 0, 393371, 5, 0, 458774, 3, 0, 458776, 4, 0, 458778, 4, 0, 458780, 4, 0, 458782, 4, 0, 458784, 4, 0, 458786, 4, 0, 458788, 4, 0, 458790, 6, 0, 458792, 6, 0, 458794, 7, 0, 458815, 3, 0, 458817, 4, 0, 458819, 4, 0, 458821, 4, 0, 458823, 5, 0, 458832, 3, 0, 458834, 4, 0, 458836, 4, 0, 458838, 4, 0, 458840, 4, 0, 458842, 5, 0, 589822, 4, 0, 524288, 6, 0, 524290, 6, 0, 524292, 6, 0, 524294, 6, 0, 524296, 6, 0, 524298, 6, 0, 524300, 6, 0, 524302, 6, 0, 524304, 7, 0, 524396, 3, 0, 524398, 4, 0, 524400, 4, 0, 524402, 4, 0, 524404, 4, 0, 524406, 4, 0, 524408, 4, 0, 524410, 4, 0, 524412, 4, 0, 524414, 5, 0, 524435, 3, 0, 524437, 4, 0, 524439, 4, 0, 524441, 4, 0, 524443, 5, 0, 589846, 3, 0, 589848, 4, 0, 589850, 4, 0, 589852, 4, 0, 589854, 4, 0, 589856, 4, 0, 589858, 4, 0, 589860, 4, 0, 589862, 4, 0, 589864, 4, 0, 589866, 5, 0, 589887, 3, 0, 589889, 4, 0, 589891, 4, 0, 589893, 4, 0, 589895, 5, 0, 589904, 3, 0, 589906, 4, 0, 589908, 4, 0, 589910, 4, 0, 589912, 4, 0, 589914, 5, 0, 720894, 4, 0, 655360, 4, 0, 655362, 4, 0, 655364, 4, 0, 655366, 4, 0, 655368, 4, 0, 655370, 4, 0, 655372, 4, 0, 655374, 4, 0, 655376, 5, 0, 655468, 3, 0, 655470, 4, 0, 655472, 4, 0, 655474, 4, 0, 655476, 4, 0, 655478, 4, 0, 655480, 4, 0, 655482, 4, 0, 655484, 4, 0, 655486, 5, 0, 655507, 3, 0, 655509, 4, 0, 655511, 4, 0, 655513, 4, 0, 655515, 5, 0, 720918, 3, 0, 720920, 4, 0, 720922, 4, 0, 720924, 4, 0, 720926, 4, 0, 720928, 4, 0, 720930, 4, 0, 720932, 4, 0, 720934, 4, 0, 720936, 4, 0, 720938, 5, 0, 720959, 3, 0, 720961, 4, 0, 720963, 4, 0, 720965, 4, 0, 720967, 5, 0, 720976, 3, 0, 720978, 4, 0, 720980, 4, 0, 720982, 4, 0, 720984, 4, 0, 720986, 5, 0, 851966, 4, 0, 786432, 4, 0, 786434, 4, 0, 786436, 4, 0, 786438, 4, 0, 786440, 4, 0, 786442, 4, 0, 786444, 4, 0, 786446, 4, 0, 786448, 5, 0, 786540, 3, 0, 786542, 4, 0, 786544, 4, 0, 786546, 4, 0, 786548, 4, 0, 786550, 4, 0, 786552, 4, 0, 786554, 4, 0, 786556, 4, 0, 786558, 5, 0, 786579, 3, 0, 786581, 4, 0, 786583, 4, 0, 786585, 4, 0, 786587, 5, 0 )
 
 [node name="FallZone" parent="." instance=ExtResource( 2 )]
 
 [node name="Player" type="Node2D" parent="."]
 
 [node name="Player" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 220, 280 )
+position = Vector2( 108.215, 309.73 )
 
-[node name="Position2D" type="Position2D" parent="Player"]
-position = Vector2( 220, 280 )
+[node name="StartPosition" type="Position2D" parent="Player"]
+position = Vector2( 107.025, 312.109 )
 
 [node name="Coins" type="Node2D" parent="."]
+script = ExtResource( 10 )
 
-[node name="HUD" parent="." instance=ExtResource( 4 )]
+[node name="coin" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 395.113, 90.7691 )
 
-[node name="BackgroundMusic" parent="." instance=ExtResource( 5 )]
+[node name="coin1" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 676.531, -102.763 )
+
+[node name="coin2" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 296.102, -289.64 )
+
+[node name="coin3" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 2134.29, -770.43 )
+
+[node name="coin4" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 2023.36, -769.387 )
+
+[node name="coin5" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 1704.3, 188.854 )
+
+[node name="coin6" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 1554.49, 184.467 )
+
+[node name="coin7" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 2746.77, -15.2824 )
+
+[node name="coin8" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 3364.64, -201.587 )
+
+[node name="coin9" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 3185.29, -201.963 )
+
+[node name="coin10" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 4571.91, -337.532 )
+
+[node name="coin11" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 5042.83, -487.372 )
+
+[node name="coin12" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 5380.57, -399.371 )
+
+[node name="coin13" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 5264.03, -729.97 )
+
+[node name="coin14" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 5987.07, 40.6357 )
+
+[node name="coin15" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 5825.19, 40.78 )
+
+[node name="coin16" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 6386.49, -967.668 )
+
+[node name="coin17" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 6506.53, -735.843 )
+
+[node name="coin18" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 6294.64, -732.865 )
+
+[node name="coin19" parent="Coins" instance=ExtResource( 11 )]
+position = Vector2( 6769.13, -150.469 )
+
+[node name="Fans" type="Node2D" parent="."]
+scale = Vector2( 0.75, 0.75 )
+
+[node name="Fan1" type="Node2D" parent="Fans"]
+scale = Vector2( 1.33333, 1.33333 )
+
+[node name="Lever" parent="Fans/Fan1" instance=ExtResource( 8 )]
+position = Vector2( 92.7937, -526.063 )
+
+[node name="Fan" parent="Fans/Fan1" instance=ExtResource( 9 )]
+position = Vector2( 946.275, -593.434 )
+
+[node name="Fan2" type="Node2D" parent="Fans"]
+scale = Vector2( 1.33333, 1.33333 )
+
+[node name="Lever" parent="Fans/Fan2" instance=ExtResource( 8 )]
+position = Vector2( 4171.63, 99.7885 )
+
+[node name="Fan" parent="Fans/Fan2" instance=ExtResource( 9 )]
+position = Vector2( 4203.65, -639.669 )
+scale = Vector2( -1, 1 )
+
+[node name="Fan3" type="Node2D" parent="Fans"]
+position = Vector2( -1.77979, 1.77979 )
+scale = Vector2( 1.33333, 1.33333 )
+
+[node name="Lever" parent="Fans/Fan3" instance=ExtResource( 8 )]
+position = Vector2( 7432.08, -139.842 )
+
+[node name="Fan" parent="Fans/Fan3" instance=ExtResource( 9 )]
+position = Vector2( 5487.83, -785.982 )
+
+[node name="Checkpoint" parent="." instance=ExtResource( 12 )]
+position = Vector2( 3948.96, 148.145 )
+[connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]
+[connection signal="body_entered" from="FallZone" to="Player/Player" method="_on_FallZone_body_entered"]
+[connection signal="looseLife" from="Player/Player" to="HUD" method="_on_Player_looseLife"]
+[connection signal="coin_collected" from="Coins/coin" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin1" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin2" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin3" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin4" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin5" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin6" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin7" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin8" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin9" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin10" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin11" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin12" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin13" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin14" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin15" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin16" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin17" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin18" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/coin19" to="HUD" method="_on_coin_collected"]
+[connection signal="leverIsPressed" from="Fans/Fan1/Lever" to="Fans/Fan1/Fan" method="_on_Lever_leverIsPressed"]
+[connection signal="playerEnteredFan" from="Fans/Fan1/Fan" to="Player/Player" method="_on_Fan_playerEnteredFan"]
+[connection signal="leverIsPressed" from="Fans/Fan2/Lever" to="Fans/Fan2/Fan" method="_on_Lever_leverIsPressed"]
+[connection signal="playerEnteredFan" from="Fans/Fan2/Fan" to="Player/Player" method="_on_Fan_playerEnteredFan"]
+[connection signal="leverIsPressed" from="Fans/Fan3/Lever" to="Fans/Fan3/Fan" method="_on_Lever_leverIsPressed"]
+[connection signal="playerEnteredFan" from="Fans/Fan3/Fan" to="Player/Player" method="_on_Fan_playerEnteredFan"]
+[connection signal="checkpointChecked" from="Checkpoint" to="Player/Player" method="_on_Checkpoint_checkpointChecked"]

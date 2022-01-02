@@ -20,7 +20,7 @@ func _on_Lever_leverIsPressed(isActive):
 
 # Signal zum Player, um dort das Movement anzupassen
 func _on_Area2D_body_entered(_body):
-	emit_signal("playerEnteredFan", true)
+	emit_signal("playerEnteredFan", true, self.scale.x)
 
 func _on_Area2D_body_exited(_body):
-	emit_signal("playerEnteredFan", false)
+	emit_signal("playerEnteredFan", false, self.scale.x)

@@ -19,7 +19,7 @@ func _input(event):
 
 func _on_MainMenuButton_pressed():
 	get_tree().paused = false
-	if get_tree().change_scene("res://scenes/menu/titleMenu/titleMenu.tscn") != OK:
+	if get_tree().change_scene(Globals.TITLE_MENU) != OK:
 		print("An unexpected error occured when trying to switch to the titleMenu scene")
 	$Overlay.visible = false 
 	Globals.reset()

@@ -22,3 +22,11 @@ func _ready():
 func reset():
 	life = 3
 	coinCount = 0
+
+const WIN_SCREEN = "res://scenes/menu/gameOverAndWin/winScreen.tscn"
+const TITLE_MENU = "res://scenes/menu/titleMenu/titleMenu.tscn"
+const LEVEL_SELECT = "res://scenes/menu/levelSelect/levelSelect.tscn"
+const GAME_OVER = "res://scenes/menu/gameOverAndWin/gameOver.tscn"
+
+func setLevel():
+	level = "res://scenes/level/"+ levelName +".tscn"

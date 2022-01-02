@@ -2,9 +2,11 @@
 
 [ext_resource path="res://scenes/hud/hud.gd" type="Script" id=1]
 [ext_resource path="res://fonts/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/Leben/Herz.png" type="Texture" id=3]
-[ext_resource path="res://assets/Ei.png" type="Texture" id=4]
+[ext_resource path="res://assets/life/life.png" type="Texture" id=3]
+[ext_resource path="res://assets/egg/egg.png" type="Texture" id=4]
 [ext_resource path="res://scenes/hud/panelStyles.tres" type="StyleBox" id=5]
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -39,7 +41,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CoinImage" type="TextureRect" parent="."]
+[node name="EggImage" type="TextureRect" parent="."]
 margin_left = -10.2063
 margin_top = -4.4527
 margin_right = 103.794

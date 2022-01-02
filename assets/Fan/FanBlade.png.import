@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FanBlade.png-a2e0e0d8cae04a4ff6a251441ada0ccc.stex"
+path="res://.import/fanBlade.png-809d6af37e5f514b486368ac29ceabd8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fan/FanBlade.png"
-dest_files=[ "res://.import/FanBlade.png-a2e0e0d8cae04a4ff6a251441ada0ccc.stex" ]
+source_file="res://assets/fan/fanBlade.png"
+dest_files=[ "res://.import/fanBlade.png-809d6af37e5f514b486368ac29ceabd8.stex" ]
 
 [params]
 

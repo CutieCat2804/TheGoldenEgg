@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="TheGoldenEgg"
 run/main_scene="res://scenes/menu/titleMenu/titleMenu.tscn"
-config/icon="res://assets/Ei.png"
+config/icon="res://assets/egg/egg.png"
 
 [autoload]
 

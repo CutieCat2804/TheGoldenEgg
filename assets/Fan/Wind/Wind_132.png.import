@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wind_132.png-e72a9d751978cae5efad683c6ad8bd82.stex"
+path="res://.import/Wind_132.png-d664011ad312528c2ff897c587893331.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Fan/Wind/Wind_132.png"
-dest_files=[ "res://.import/Wind_132.png-e72a9d751978cae5efad683c6ad8bd82.stex" ]
+source_file="res://assets/fan/wind/Wind_132.png"
+dest_files=[ "res://.import/Wind_132.png-d664011ad312528c2ff897c587893331.stex" ]
 
 [params]
 

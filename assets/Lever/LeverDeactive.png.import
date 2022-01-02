@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LeverDeactive.png-b6d0cb1acdaf1c5fb8c96da74102e88a.stex"
+path="res://.import/leverDeactive.png-750d275e3ba0de3ce7796e4e02e3db27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Lever/LeverDeactive.png"
-dest_files=[ "res://.import/LeverDeactive.png-b6d0cb1acdaf1c5fb8c96da74102e88a.stex" ]
+source_file="res://assets/lever/leverDeactive.png"
+dest_files=[ "res://.import/leverDeactive.png-750d275e3ba0de3ce7796e4e02e3db27.stex" ]
 
 [params]
 

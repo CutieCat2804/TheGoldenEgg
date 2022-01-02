@@ -8,21 +8,21 @@ onready var deathTimer = get_node("DeathTimer")
 const SPEED = 300
 const GRAVITY = 35
 const JUMPFORCE = -1100
-const JUMPFORCEJETPACK = -2300
+const JUMPFORCE_JETPACK = -2300
 
-const FANSPEED = 200
-const TOWARDSFANSPEED = 75
-const AWAYFANSPEED = 275
+const FAN_SPEED = 200
+const TOWARDS_FAN_SPEED = 75
+const AWAY_FAN_SPEED = 275
 
 var velocity = Vector2(0,0)
 var coins = 0
-var jump_count = 0
-var on_ground = false
+var jumpCount = 0
+var onGround = false
 var gotHurt = false
 var item = "none"
 var usedJetpack = true
 
-onready var playerSpawnpoint = get_parent().get_node("Position2D").position
+onready var playerSpawnpoint = get_parent().get_node("StartPosition").position
 
 var playerEnteredFan = false
 
@@ -40,14 +40,15 @@ func _physics_process(_delta):
 				velocity.x = -SPEED
 				
 			if Input.is_action_just_pressed("fly") and is_on_floor() and item == "Jetpack" and usedJetpack == false:
-				velocity.y = JUMPFORCEJETPACK	
+				velocity.y = JUMPFORCE_JETPACK	
 		else:
-			velocity.x = FANSPEED
+			# setzt das Movement während Player im Fan ist
+			velocity.x = FAN_SPEED
 			velocity.y = -GRAVITY
 			if Input.is_action_pressed("right"):
-				velocity.x = AWAYFANSPEED		
+				velocity.x = AWAY_FAN_SPEED		
 			elif Input.is_action_pressed("left"):
-				velocity.x = -TOWARDSFANSPEED
+				velocity.x = -TOWARDS_FAN_SPEED
 		
 		# Animationen
 	if item == "none":		
@@ -93,24 +94,24 @@ func _physics_process(_delta):
 	# setzt die Variablen, damit Player nicht beim fallen springen kann
 	# setzt jump_count sinnvoll zurück
 	if is_on_floor():
-		if on_ground == false:
-			on_ground = true
-			jump_count = 0
+		if onGround == false:
+			onGround = true
+			jumpCount = 0
 	else:
-		if on_ground == true:
-			on_ground = false
+		if onGround == true:
+			onGround = false
 			# auf 2 kann der Player nicht nochmal in der Luft beim Fallen springen| auf 1 einmal
-			jump_count = 1
+			jumpCount = 1
 		
 	# Lässt den Player springen|just verhindert gedrückt halten
 	# is_on_floor() verhindert springen in der Luft
 	if Input.is_action_just_pressed("jump"):
 		if Globals.doubleJumpActive == true:
 			# ermöglicht Doppelsprung
-			if jump_count < 2:
-				jump_count += 1
+			if jumpCount < 2:
+				jumpCount += 1
 				velocity.y = JUMPFORCE
-				on_ground = false
+				onGround = false
 		elif is_on_floor():
 			velocity.y = JUMPFORCE
 			
@@ -151,8 +152,8 @@ func playerDeath():
 	# checkt ob Leben = 1 ist| gleich 1, weil Leben erst danach durch das Signal auf null gesetzt wird
 	if Globals.life == 1:		
 		Globals.reset()
-		if get_tree().change_scene("res://scenes/menu/gameOverAndWin/gameOver.tscn") != OK:
-			print("An unexpected error occured when trying to switch to the gameOver scene")
+		if get_tree().change_scene(Globals.GAME_OVER) != OK:
+			print("An unexpected error occured when trying to switch to the " + Globals.GAME_OVER + " scene")
 	else:
 		# setzt die Player(self) Position auf die Position der Position2D Node zurück
 		self.position = playerSpawnpoint
@@ -165,9 +166,6 @@ func playerDeath():
 		
 		usedJetpack = true
 		respawnJetpack()
-		
-		
-
 
 func _on_Jetpack_jetpack_collected():
 	usedJetpack = false
@@ -179,10 +177,10 @@ func respawnJetpack():
 			item = "none"
 			emit_signal("respawnJetpack")
 
-
+# setzt den Spawnpoint auf die jetzige Position beim Checkpoint
 func _on_Checkpoint_checkpointChecked():
 	playerSpawnpoint = self.position
 
-
+# Signal des Fans, was angibt, ob Player in der Area2D ist oder nicht
 func _on_Fan_playerEnteredFan(_playerEnteredFan):
 	playerEnteredFan = _playerEnteredFan

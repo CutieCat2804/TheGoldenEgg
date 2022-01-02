@@ -18,8 +18,8 @@ var score = 0
 func _ready():
 	if Globals.coinCount == 0:
 		emit_signal("coinCount")
-	$Coins.text = String(coins) + "/" + String(Globals.coinCount)
-	$Life.text = String(Globals.life)
+	$Coins.text = ("0" + str(coins) if str(coins).length() == 1 else str(coins)) + "/" + str(Globals.coinCount)
+	$Life.text = str(Globals.life)
 	
 
 func _physics_process(_delta):	
@@ -33,11 +33,10 @@ func _physics_process(_delta):
 	if s > 59 :
 		m += 1
 		s = 0
-	
 		
 	timerLabel.text = ("0" + str(m) if str(m).length() == 1  else str(s)) + ":" + ("0" + str(s) if str(s).length() == 1  else str(s)) + ":0" + str(ms)
 	
-	# reseted das Spiel, wenn der Player vier Coins eingesammelt
+	# reseted das Spiel, wenn der Player genug Coins eingesammelt
 	if coins == Globals.coinCount - 1:
 		# setzt Timer damit Winning Screen erst nach kurzem kommt
 		winningTimer.set_wait_time(0.5)
@@ -45,8 +44,8 @@ func _physics_process(_delta):
 		yield(winningTimer, "timeout") # wartet bis Timer ausläuft
 		# wird erst ausgeführt, wenn timer abgelaufen ist
 		Globals.reset()
-		if get_tree().change_scene("res://scenes/menu/gameOverAndWin/winScreen.tscn") != OK:
-			print("An unexpected error occured when trying to switch to the winScreen scene")
+		if get_tree().change_scene(Globals.WIN_SCREEN) != OK:
+			print("An unexpected error occured when trying to switch to the " + Globals.WIN_SCREEN + " scene")
 		
 		# checkt, ob jetziger score besser ist als der vorherige Highscore
 		score = timerLabel.text

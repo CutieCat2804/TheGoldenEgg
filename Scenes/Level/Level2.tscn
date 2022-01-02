@@ -1,241 +1,34 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/tileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/fallzone.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Sounds/Its-Raining-Pixels.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/backgroundMusic.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/background/background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/coin/coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/coin/coins.gd" type="Script" id=8]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen-02.png" type="Texture" id=9]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-04.png" type="Texture" id=10]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-03.png" type="Texture" id=11]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-01.png" type="Texture" id=12]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen_Zeichenfläche 1.png" type="Texture" id=13]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-02.png" type="Texture" id=14]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen-04.png" type="Texture" id=15]
-[ext_resource path="res://assets/background/Bäume/Bäume_Zeichenfläche 1-05.png" type="Texture" id=16]
-[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-01.png" type="Texture" id=17]
-[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-03.png" type="Texture" id=18]
-[ext_resource path="res://assets/background/Büsche/Büsche_Zeichenfläche 1-02.png" type="Texture" id=19]
-[ext_resource path="res://assets/background/Pflanzen/Pflanzen-03.png" type="Texture" id=20]
-[ext_resource path="res://scenes/enemy/enemy.tscn" type="PackedScene" id=21]
+[ext_resource path="res://tileMaps/grassDecorationTileMap.tres" type="TileSet" id=9]
+[ext_resource path="res://scenes/enemies/rock/rock.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/checkpoint/checkpoint.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/lever/lever.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scenes/fan/fan.tscn" type="PackedScene" id=24]
 
 [node name="Level2" type="Node2D"]
 
-[node name="Background" type="Node2D" parent="."]
+[node name="BackgroundMusic" parent="." instance=ExtResource( 3 )]
 
-[node name="ParallaxBackground" parent="Background" instance=ExtResource( 4 )]
+[node name="HUD" parent="." instance=ExtResource( 7 )]
 
-[node name="Bäume_Zeichenfläche 1-01" type="Sprite" parent="Background"]
+[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+
+[node name="Decoration" type="TileMap" parent="."]
 position = Vector2( 400, 112 )
-texture = ExtResource( 12 )
-
-[node name="Bäume_Zeichenfläche 1-02" type="Sprite" parent="Background"]
-position = Vector2( 992, 32 )
-texture = ExtResource( 14 )
-
-[node name="Bäume_Zeichenfläche 1-03" type="Sprite" parent="Background"]
-position = Vector2( 714.667, -672 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 14 )
-
-[node name="Bäume_Zeichenfläche 1-04" type="Sprite" parent="Background"]
-position = Vector2( 3728, -896 )
-texture = ExtResource( 11 )
-
-[node name="Bäume_Zeichenfläche 1-05" type="Sprite" parent="Background"]
-position = Vector2( 4688, -608 )
-texture = ExtResource( 16 )
-
-[node name="Bäume_Zeichenfläche 1-06" type="Sprite" parent="Background"]
-position = Vector2( 4480, 16 )
-texture = ExtResource( 10 )
-
-[node name="Bäume_Zeichenfläche 1-07" type="Sprite" parent="Background"]
-position = Vector2( 6320, -48 )
-texture = ExtResource( 11 )
-
-[node name="Bäume_Zeichenfläche 1-08" type="Sprite" parent="Background"]
-position = Vector2( 6912, -832 )
-texture = ExtResource( 10 )
-
-[node name="Bäume_Zeichenfläche 1-09" type="Sprite" parent="Background"]
-position = Vector2( 7712, -656 )
-texture = ExtResource( 16 )
-
-[node name="Bäume_Zeichenfläche 1-10" type="Sprite" parent="Background"]
-position = Vector2( 8640, -16 )
-texture = ExtResource( 11 )
-
-[node name="Bäume_Zeichenfläche 1-11" type="Sprite" parent="Background"]
-position = Vector2( 9280, -112 )
-texture = ExtResource( 14 )
-
-[node name="Bäume_Zeichenfläche 1-12" type="Sprite" parent="Background"]
-position = Vector2( 10032, -800 )
-texture = ExtResource( 12 )
-
-[node name="Bäume_Zeichenfläche 1-13" type="Sprite" parent="Background"]
-position = Vector2( 10800, -304 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 14 )
-
-[node name="Bäume_Zeichenfläche 1-14" type="Sprite" parent="Background"]
-position = Vector2( 11312, 16 )
-texture = ExtResource( 11 )
-
-[node name="Büsche_Zeichenfläche 1-01" type="Sprite" parent="Background"]
-position = Vector2( 1328, -240 )
-texture = ExtResource( 17 )
-
-[node name="Büsche_Zeichenfläche 1-02" type="Sprite" parent="Background"]
-position = Vector2( 2752, -96 )
-texture = ExtResource( 19 )
-
-[node name="Büsche_Zeichenfläche 1-03" type="Sprite" parent="Background"]
-position = Vector2( 3248, -288 )
-texture = ExtResource( 17 )
-
-[node name="Büsche_Zeichenfläche 1-04" type="Sprite" parent="Background"]
-position = Vector2( 4704, 192 )
-texture = ExtResource( 19 )
-
-[node name="Büsche_Zeichenfläche 1-05" type="Sprite" parent="Background"]
-position = Vector2( 4912, -192 )
-texture = ExtResource( 18 )
-
-[node name="Büsche_Zeichenfläche 1-06" type="Sprite" parent="Background"]
-position = Vector2( 6272, -1008 )
-texture = ExtResource( 18 )
-
-[node name="Büsche_Zeichenfläche 1-07" type="Sprite" parent="Background"]
-position = Vector2( 6976, -336 )
-texture = ExtResource( 17 )
-
-[node name="Büsche_Zeichenfläche 1-08" type="Sprite" parent="Background"]
-position = Vector2( 8928, 144 )
-texture = ExtResource( 17 )
-
-[node name="Büsche_Zeichenfläche 1-09" type="Sprite" parent="Background"]
-position = Vector2( 10144, -192 )
-texture = ExtResource( 19 )
-
-[node name="Büsche_Zeichenfläche 1-10" type="Sprite" parent="Background"]
-position = Vector2( 10368, -192 )
-texture = ExtResource( 18 )
-
-[node name="Büsche_Zeichenfläche 1-11" type="Sprite" parent="Background"]
-position = Vector2( 11088, 192 )
-texture = ExtResource( 19 )
-
-[node name="Pflanzen-03" type="Sprite" parent="Background"]
-position = Vector2( 10208, -576 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen-04" type="Sprite" parent="Background"]
-position = Vector2( 11200, 240 )
-texture = ExtResource( 15 )
-
-[node name="Pflanzen-02" type="Sprite" parent="Background"]
-position = Vector2( 9872, -144 )
-texture = ExtResource( 9 )
-
-[node name="Pflanzen_Zeichenfläche 1" type="Sprite" parent="Background"]
-position = Vector2( 9792, -144 )
-texture = ExtResource( 13 )
-
-[node name="Pflanzen-05" type="Sprite" parent="Background"]
-position = Vector2( 7808, -432 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen-06" type="Sprite" parent="Background"]
-position = Vector2( 7632, -432 )
-texture = ExtResource( 15 )
-
-[node name="Pflanzen-07" type="Sprite" parent="Background"]
-position = Vector2( 8720, 192 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen_Zeichenfläche 2" type="Sprite" parent="Background"]
-position = Vector2( 6960, -624 )
-texture = ExtResource( 13 )
-
-[node name="Pflanzen-08" type="Sprite" parent="Background"]
-position = Vector2( 6880, -288 )
-texture = ExtResource( 9 )
-
-[node name="Pflanzen-09" type="Sprite" parent="Background"]
-position = Vector2( 6368, -960 )
-texture = ExtResource( 9 )
-
-[node name="Pflanzen-10" type="Sprite" parent="Background"]
-position = Vector2( 6240, 144 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen-11" type="Sprite" parent="Background"]
-position = Vector2( 5920, -144 )
-texture = ExtResource( 15 )
-
-[node name="Pflanzen-12" type="Sprite" parent="Background"]
-position = Vector2( 4528, 240 )
-texture = ExtResource( 9 )
-
-[node name="Pflanzen_Zeichenfläche 3" type="Sprite" parent="Background"]
-position = Vector2( 4640, 240 )
-texture = ExtResource( 13 )
-
-[node name="Pflanzen-13" type="Sprite" parent="Background"]
-position = Vector2( 3840, -672 )
-texture = ExtResource( 15 )
-
-[node name="Pflanzen-14" type="Sprite" parent="Background"]
-position = Vector2( 4640, -384 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen-15" type="Sprite" parent="Background"]
-position = Vector2( 3152, -240 )
-texture = ExtResource( 9 )
-
-[node name="Pflanzen_Zeichenfläche 4" type="Sprite" parent="Background"]
-position = Vector2( 2304, 144 )
-texture = ExtResource( 13 )
-
-[node name="Pflanzen-16" type="Sprite" parent="Background"]
-position = Vector2( 1744, 240 )
-texture = ExtResource( 9 )
-
-[node name="Büsche_Zeichenfläche 1-12" type="Sprite" parent="Background"]
-position = Vector2( 1568, 96 )
-texture = ExtResource( 18 )
-
-[node name="Pflanzen-17" type="Sprite" parent="Background"]
-position = Vector2( 1072, 240 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen_Zeichenfläche 5" type="Sprite" parent="Background"]
-position = Vector2( 1680, 240 )
-texture = ExtResource( 13 )
-
-[node name="Pflanzen-18" type="Sprite" parent="Background"]
-position = Vector2( 528, -528 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen-19" type="Sprite" parent="Background"]
-position = Vector2( 608, -528 )
-texture = ExtResource( 15 )
-
-[node name="Pflanzen-20" type="Sprite" parent="Background"]
-position = Vector2( 304, 336 )
-texture = ExtResource( 20 )
-
-[node name="Pflanzen-21" type="Sprite" parent="Background"]
-position = Vector2( 496, 336 )
-texture = ExtResource( 9 )
+tile_set = ExtResource( 9 )
+cell_size = Vector2( 4, 4 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -17824328, 7, 0, -17299999, 12, 0, -15727808, 1, 0, -15006119, 4, 0, -14087834, 1, 0, -12582842, 2, 0, -12582052, 12, 0, -11794836, 11, 0, -11007596, 12, 0, -10484679, 0, 0, -10158048, 10, 0, -8648944, 10, 0, -8583408, 10, 0, -7797735, 13, 0, -6814100, 8, 0, -6747599, 6, 0, -6682063, 6, 0, -6551978, 9, 0, -5766483, 9, 0, -5438770, 11, 0, -5308187, 7, 0, -4455319, 8, 0, -4453948, 7, 0, -4191869, 9, 0, -3864258, 10, 0, -2882997, 7, 0, -2619222, 0, 0, -2030147, 5, 0, -784375, 3, 0, -524150, 5, 0, -521564, 5, 0, -392191, 6, 0, 262435, 8, 0, 720894, 4, 0, 852448, 10, 0, 918960, 11, 0, 1050711, 8, 0, 1574886, 12, 0, 1640481, 13, 0, 1836086, 7, 0, 1837682, 8, 0, 2424997, 11, 0, 2425151, 12, 0, 2425163, 13, 0, 2425888, 11, 0, 2427532, 11, 0, 2491399, 10, 0, 3407898, 8, 0, 4063209, 11, 0, 4128674, 10, 0 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
 
@@ -246,7 +39,7 @@ texture = ExtResource( 9 )
 [node name="Player" parent="Player" instance=ExtResource( 6 )]
 position = Vector2( 150.893, 307.031 )
 
-[node name="Position2D" type="Position2D" parent="Player"]
+[node name="StartPosition" type="Position2D" parent="Player"]
 position = Vector2( 153.777, 303.738 )
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -332,13 +125,6 @@ position = Vector2( 10144, -576 )
 [node name="coin23" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 11296, 241 )
 
-[node name="HUD" parent="." instance=ExtResource( 7 )]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -40.0
-autoplay = true
-
 [node name="Checkpoint" parent="." instance=ExtResource( 22 )]
 position = Vector2( 5079.08, 195.568 )
 
@@ -349,6 +135,7 @@ position = Vector2( 7165.49, -688.263 )
 
 [node name="Lever" parent="Fan1" instance=ExtResource( 23 )]
 position = Vector2( 938.099, 242.178 )
+[connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]
 [connection signal="body_entered" from="FallZone" to="Player/Player" method="_on_FallZone_body_entered"]
 [connection signal="looseLife" from="Player/Player" to="HUD" method="_on_Player_looseLife"]
 [connection signal="playerGotHurt" from="Enemies/Enemy" to="Player/Player" method="_on_Enemy_playerGotHurt"]
@@ -377,7 +164,6 @@ position = Vector2( 938.099, 242.178 )
 [connection signal="coin_collected" from="Coins/coin21" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin22" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin23" to="HUD" method="_on_coin_collected"]
-[connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]
 [connection signal="checkpointChecked" from="Checkpoint" to="Player/Player" method="_on_Checkpoint_checkpointChecked"]
 [connection signal="playerEnteredFan" from="Fan1/Fan" to="Player/Player" method="_on_Fan_playerEnteredFan"]
 [connection signal="leverIsPressed" from="Fan1/Lever" to="Fan1/Fan" method="_on_Lever_leverIsPressed"]

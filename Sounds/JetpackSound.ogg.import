@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/JetpackSound.ogg-e111c3bc6b39fd11f8b7cc816858406c.oggstr"
+path="res://.import/jetpackSound.ogg-3dec9254e1042afd8331a94229f373e5.oggstr"
 
 [deps]
 
-source_file="res://Sounds/JetpackSound.ogg"
-dest_files=[ "res://.import/JetpackSound.ogg-e111c3bc6b39fd11f8b7cc816858406c.oggstr" ]
+source_file="res://sounds/jetpackSound.ogg"
+dest_files=[ "res://.import/jetpackSound.ogg-3dec9254e1042afd8331a94229f373e5.oggstr" ]
 
 [params]
 

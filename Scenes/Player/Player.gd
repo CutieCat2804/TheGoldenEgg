@@ -21,11 +21,16 @@ var onGround = false
 var gotHurt = false
 var item = "none"
 var usedJetpack = true
-
-onready var playerSpawnpoint = get_parent().get_node("StartPosition").position
-
+var playDeadAnimation = false
 var playerEnteredFan = false
 var fanDirection = 1
+
+onready var playerSpawnpoint = get_parent().get_node("StartPosition").position
+onready var lavaSplash = get_parent().get_parent().get_node_or_null("LavaSplash")
+onready var playerSprite = get_node(Globals.levelParameters[Globals.levelNumber - 1]["sprite"])
+
+func _ready():
+	playerSprite.visible = true
 
 func _physics_process(_delta):
 	if gotHurt == false:
@@ -55,38 +60,41 @@ func _physics_process(_delta):
 		# Animationen
 	if item == "none":		
 		if Input.is_action_pressed("right"):
-			$Sprite.flip_h = false
+			playerSprite.flip_h = false
 			if is_on_floor():
-				$Sprite.play("walk")
+				playerSprite.play("walk")
 		elif Input.is_action_pressed("left"):
-			$Sprite.flip_h = true
+			playerSprite.flip_h = true
 			if is_on_floor():
-				$Sprite.play("walk")
+				playerSprite.play("walk")
 		else:
 			if is_on_floor():
-				$Sprite.play("idle")
+				playerSprite.play("idle")
 			
 		if not is_on_floor() :
-			$Sprite.play("jump")
+			if playDeadAnimation:
+				playerSprite.play("dead")
+			else:
+				playerSprite.play("jump")
 
 	elif item == "Jetpack":
 		if Input.is_action_pressed("right"):
-			$Sprite.flip_h = false
+			playerSprite.flip_h = false
 			if is_on_floor():
-				$Sprite.play("walkJetpack")
+				playerSprite.play("walkJetpack")
 		elif Input.is_action_pressed("left"):
-			$Sprite.flip_h = true
+			playerSprite.flip_h = true
 			if is_on_floor():
-				$Sprite.play("walkJetpack")
+				playerSprite.play("walkJetpack")
 		else:
 			if is_on_floor():
-				$Sprite.play("idleJetpack")
+				playerSprite.play("idleJetpack")
 			
 		if not is_on_floor() and not usedJetpack:
-			$Sprite.play("jumpJetpack")
+			playerSprite.play("jumpJetpack")
 			
 		if Input.is_action_just_pressed("fly") and is_on_floor():
-			$Sprite.play("flyJetpack")
+			playerSprite.play("flyJetpack")
 			usedJetpack = true
 			
 	# Lässt den Player fallen|Je länger er fällt desto schneller fällt er
@@ -122,18 +130,37 @@ func _physics_process(_delta):
 	# move_and_slide returned Vector2 also eine Velocity|Reseted Z. 17 gesetzte Velocity
 	# Vector2.UP bestimmt die Richtung des Bodens (0,-1)
 	velocity = move_and_slide(velocity,Vector2.UP)
-		
+	
 	# lerp = linear interpolation|kleine Änderungen über Zeit zwischen zwei Zahlen
 	# Spieler bleibt durch diese Funktion langsam wieder stehen
 	velocity.x = lerp(velocity.x,0,0.1)
-
 	
+	# checkt mit was der Player gerade kollidiert
+	# wenn er mit lava kollidiert stirbt er
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.name == "Lava":
+			lavaSplash.visible = true
+			lavaSplash.play("splash")
+			lavaSplash.position = $PlayerPosition.global_position
+			$CollisionShape2D.set_deferred("disabled", true)
+			velocity.y = -700
+			velocity.x = 0
+			self.set_process_input(false)	
+			self.collision_mask = 0
+			self.collision_layer = 0
+			playerDeath()
+			break;	
+
+func _on_LavaSplash_animation_finished():
+	lavaSplash.stop()
+	lavaSplash.visible = false
 				
 # Signal vom Enemy aus
 func _on_Enemy_playerGotHurt():
 	velocity.y = -700
 	$CollisionShape2D.set_deferred("disabled", true)
-	$Sprite.play("idle")
+	playerSprite.play("idle")
 	self.collision_mask = 0
 	self.collision_layer = 0
 	playerDeath()
@@ -148,6 +175,7 @@ func _on_FallZone_body_entered(_body):
 func playerDeath():
 	gotHurt = true
 	$DeathSound.play()
+	playDeadAnimation = true;
 	deathTimer.set_wait_time(1)
 	deathTimer.start() 
 	yield(deathTimer, "timeout") 
@@ -160,11 +188,13 @@ func playerDeath():
 		# setzt die Player(self) Position auf die Position der Position2D Node zurück
 		self.position = playerSpawnpoint
 		$CollisionShape2D.set_deferred("disabled", false)
-		self.collision_mask = 62
+		self.collision_mask = 127
 		self.collision_layer = 1
 		gotHurt = false
 		# sendet Signal an das HUD, um dort das Leben richtig anzuzeigen
 		emit_signal("looseLife")
+		
+		playDeadAnimation = false;
 		
 		usedJetpack = true
 		respawnJetpack()
@@ -187,3 +217,6 @@ func _on_Checkpoint_checkpointChecked():
 func _on_Fan_playerEnteredFan(_playerEnteredFan, _fanDirection):
 	playerEnteredFan = _playerEnteredFan
 	fanDirection = _fanDirection
+
+
+

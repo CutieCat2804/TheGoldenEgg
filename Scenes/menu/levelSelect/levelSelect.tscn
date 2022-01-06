@@ -14,15 +14,15 @@
 size = 64
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 24
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -41,10 +41,6 @@ __meta__ = {
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.76221
-margin_top = -0.793701
-margin_right = 4.76221
-margin_bottom = -0.793701
 color = Color( 1, 0.929412, 0.607843, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,6 +88,17 @@ margin_right = 1501.9
 margin_bottom = 423.49
 text = "3"
 
+[node name="Level4" parent="." instance=ExtResource( 9 )]
+anchor_left = -0.767106
+anchor_top = -0.090959
+anchor_right = -0.767106
+anchor_bottom = -0.090959
+margin_left = 1477.9
+margin_top = 353.49
+margin_right = 1549.9
+margin_bottom = 423.49
+text = "4"
+
 [node name="Berge3" type="Sprite" parent="."]
 position = Vector2( 490.275, 565.547 )
 scale = Vector2( 0.5, 0.5 )
@@ -121,7 +128,7 @@ margin_left = 944.0
 margin_top = 192.0
 margin_right = 1064.0
 margin_bottom = 224.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
 text = "Highscore:"
 __meta__ = {
@@ -134,7 +141,7 @@ margin_left = 1088.0
 margin_top = 192.0
 margin_right = 1148.0
 margin_bottom = 222.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
 text = "-------"
 script = ExtResource( 7 )
@@ -148,7 +155,7 @@ anchor_left = 0.7375
 anchor_top = 0.4
 anchor_right = 1.07969
 anchor_bottom = 0.454167
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.694118, 0.196078, 1 )
 text = "Doppelsprung benötigt"
 __meta__ = {
@@ -174,12 +181,13 @@ text = "Hauptmenü"
 [node name="PlayButton" parent="." instance=ExtResource( 6 )]
 visible = false
 margin_left = 544.0
-margin_top = 288.0
+margin_top = 368.0
 margin_right = 704.0
-margin_bottom = 353.0
+margin_bottom = 433.0
 text = "Spielen"
 [connection signal="pressed" from="Level1" to="." method="_on_Level_pressed" binds= [ 1 ]]
 [connection signal="pressed" from="Level2" to="." method="_on_Level_pressed" binds= [ 2 ]]
 [connection signal="pressed" from="Level3" to="." method="_on_Level_pressed" binds= [ 3 ]]
+[connection signal="pressed" from="Level4" to="." method="_on_Level_pressed" binds= [ 4 ]]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]

@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://TileMaps/grassTileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/fallzone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/backgroundMusic.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/background/background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/background/grassBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/coin/coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/hud/hud.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/coin/coins.gd" type="Script" id=8]
 [ext_resource path="res://tileMaps/grassDecorationTileMap.tres" type="TileSet" id=9]
-[ext_resource path="res://tileMaps/desertTileMap.tres" type="TileSet" id=10]
 [ext_resource path="res://scenes/enemies/rock/rock.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/checkpoint/checkpoint.tscn" type="PackedScene" id=22]
 
@@ -133,13 +132,6 @@ position = Vector2( 11274.8, 239.586 )
 
 [node name="Checkpoint" parent="." instance=ExtResource( 22 )]
 position = Vector2( 5079.08, 195.568 )
-
-[node name="TileMap2" type="TileMap" parent="."]
-scale = Vector2( 0.75, 0.75 )
-z_index = -1
-tile_set = ExtResource( 10 )
-format = 1
-tile_data = PoolIntArray( -393183, 0, 0, -393181, 1, 0, -393179, 1, 0, -393177, 2, 0, 327735, 12, 0, 327737, 4, 0, 327739, 4, 0, 327741, 13, 0, 458803, 3, 0, 458805, 4, 0, 458807, 4, 0, 458809, 7, 0, 458811, 7, 0, 458813, 7, 0, 458815, 4, 0, 458817, 5, 0, 589875, 6, 0, 589877, 7, 0, 589879, 7, 0, 589881, 10, 0, 589883, 10, 0, 589885, 10, 0, 589887, 7, 0, 589889, 8, 0, 720947, 9, 0, 720949, 10, 0, 720951, 10, 0, 720953, 10, 0, 720955, 10, 0, 720957, 10, 0, 720959, 10, 0, 720961, 11, 0 )
 [connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]
 [connection signal="body_entered" from="FallZone" to="Player/Player" method="_on_FallZone_body_entered"]
 [connection signal="looseLife" from="Player/Player" to="HUD" method="_on_Player_looseLife"]

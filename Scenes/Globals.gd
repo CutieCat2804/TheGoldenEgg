@@ -32,7 +32,8 @@ func setLevel():
 	level = "res://scenes/level/level"+ str(levelNumber) +".tscn"
 
 var levelParameters = [
-		{ "doubleJump": false, "highscore": "-------", "parameters": "Jetpack" }, 
-		{ "doubleJump": true, "highscore": "-------", "parameters": "Gegnersteine" },
-		{ "doubleJump": false, "highscore": "-------", "parameters": "Ventilatoren + Schalter" }
+		{ "doubleJump": false, "highscore": "-------", "parameters": "Jetpack", "sprite": "Beige" }, 
+		{ "doubleJump": true, "highscore": "-------", "parameters": "Gegnersteine", "sprite": "Beige" },
+		{ "doubleJump": false, "highscore": "-------", "parameters": "Ventilatoren + Schalter", "sprite": "Beige" },
+		{ "doubleJump": false, "highscore": "-------", "parameters": "Feuerbälle","sprite": "Brown" }
 	]

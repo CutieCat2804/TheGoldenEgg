@@ -8,4 +8,3 @@ func _on_HUD_coinCount():
 	for i in children:
 		count += 1
 	Globals.coinCount = count
-

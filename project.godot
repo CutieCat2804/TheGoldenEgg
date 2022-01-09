@@ -21,8 +21,8 @@ config/icon="res://assets/egg/egg.png"
 
 [autoload]
 
-Globals="*res://Scenes/Globals.gd"
 PauseMenu="*res://scenes/menu/pauseMenu/pauseMenu.tscn"
+Globals="*res://scenes/Globals.gd"
 
 [display]
 

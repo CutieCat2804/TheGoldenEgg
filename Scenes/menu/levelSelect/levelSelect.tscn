@@ -99,6 +99,13 @@ margin_right = 1549.9
 margin_bottom = 423.49
 text = "4"
 
+[node name="Level5" parent="." instance=ExtResource( 9 )]
+anchor_left = -0.0677813
+anchor_top = 0.154944
+anchor_right = -0.0677813
+anchor_bottom = 0.154944
+text = "5"
+
 [node name="Berge3" type="Sprite" parent="."]
 position = Vector2( 490.275, 565.547 )
 scale = Vector2( 0.5, 0.5 )
@@ -189,5 +196,6 @@ text = "Spielen"
 [connection signal="pressed" from="Level2" to="." method="_on_Level_pressed" binds= [ 2 ]]
 [connection signal="pressed" from="Level3" to="." method="_on_Level_pressed" binds= [ 3 ]]
 [connection signal="pressed" from="Level4" to="." method="_on_Level_pressed" binds= [ 4 ]]
+[connection signal="pressed" from="Level5" to="." method="_on_Level_pressed" binds= [ 5 ]]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]

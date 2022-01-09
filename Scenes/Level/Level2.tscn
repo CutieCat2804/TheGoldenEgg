@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://TileMaps/grassTileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://tileMaps/grassTileMap.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/fallzone.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/backgroundMusic.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/background/grassBackground.tscn" type="PackedScene" id=4]
@@ -11,6 +11,7 @@
 [ext_resource path="res://tileMaps/grassDecorationTileMap.tres" type="TileSet" id=9]
 [ext_resource path="res://scenes/enemies/rock/rock.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/checkpoint/checkpoint.tscn" type="PackedScene" id=22]
+
 
 [node name="Level2" type="Node2D"]
 
@@ -39,13 +40,8 @@ tile_data = PoolIntArray( -1769474, 21, 0, -1638402, 21, 0, -1507330, 21, 0, -13
 
 [node name="FallZone" parent="." instance=ExtResource( 2 )]
 
-[node name="Player" type="Node2D" parent="."]
-
-[node name="Player" parent="Player" instance=ExtResource( 6 )]
-position = Vector2( 150.893, 307.031 )
-
-[node name="StartPosition" type="Position2D" parent="Player"]
-position = Vector2( 153.777, 303.738 )
+[node name="Checkpoint" parent="." instance=ExtResource( 22 )]
+position = Vector2( 5079.08, 195.568 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -57,6 +53,14 @@ position = Vector2( 4192, -688 )
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 21 )]
 position = Vector2( 9329.41, 68.6863 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource( 6 )]
+position = Vector2( 150.893, 307.031 )
+
+[node name="StartPosition" type="Position2D" parent="Player"]
+position = Vector2( 153.777, 303.738 )
 
 [node name="Coins" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -129,15 +133,13 @@ position = Vector2( 10144, -576 )
 
 [node name="coin23" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 11274.8, 239.586 )
-
-[node name="Checkpoint" parent="." instance=ExtResource( 22 )]
-position = Vector2( 5079.08, 195.568 )
 [connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]
 [connection signal="body_entered" from="FallZone" to="Player/Player" method="_on_FallZone_body_entered"]
-[connection signal="looseLife" from="Player/Player" to="HUD" method="_on_Player_looseLife"]
+[connection signal="checkpointChecked" from="Checkpoint" to="Player/Player" method="_on_Checkpoint_checkpointChecked"]
 [connection signal="playerGotHurt" from="Enemies/Enemy" to="Player/Player" method="_on_Enemy_playerGotHurt"]
 [connection signal="playerGotHurt" from="Enemies/Enemy2" to="Player/Player" method="_on_Enemy_playerGotHurt"]
 [connection signal="playerGotHurt" from="Enemies/Enemy3" to="Player/Player" method="_on_Enemy_playerGotHurt"]
+[connection signal="looseLife" from="Player/Player" to="HUD" method="_on_Player_looseLife"]
 [connection signal="coin_collected" from="Coins/coin1" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin2" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin3" to="HUD" method="_on_coin_collected"]
@@ -161,4 +163,3 @@ position = Vector2( 5079.08, 195.568 )
 [connection signal="coin_collected" from="Coins/coin21" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin22" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin23" to="HUD" method="_on_coin_collected"]
-[connection signal="checkpointChecked" from="Checkpoint" to="Player/Player" method="_on_Checkpoint_checkpointChecked"]

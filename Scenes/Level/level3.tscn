@@ -36,6 +36,9 @@ tile_data = PoolIntArray( -1376258, 21, 0, -1245186, 21, 0, -1245054, 14, 0, -12
 
 [node name="FallZone" parent="." instance=ExtResource( 2 )]
 
+[node name="Checkpoint" parent="." instance=ExtResource( 12 )]
+position = Vector2( 3948.96, 148.145 )
+
 [node name="Player" type="Node2D" parent="."]
 
 [node name="Player" parent="Player" instance=ExtResource( 3 )]
@@ -138,11 +141,9 @@ position = Vector2( 7432.08, -139.842 )
 
 [node name="Fan" parent="Fans/Fan3" instance=ExtResource( 9 )]
 position = Vector2( 5487.83, -785.982 )
-
-[node name="Checkpoint" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3948.96, 148.145 )
 [connection signal="coinCount" from="HUD" to="Coins" method="_on_HUD_coinCount"]
 [connection signal="body_entered" from="FallZone" to="Player/Player" method="_on_FallZone_body_entered"]
+[connection signal="checkpointChecked" from="Checkpoint" to="Player/Player" method="_on_Checkpoint_checkpointChecked"]
 [connection signal="looseLife" from="Player/Player" to="HUD" method="_on_Player_looseLife"]
 [connection signal="coin_collected" from="Coins/coin" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/coin1" to="HUD" method="_on_coin_collected"]
@@ -170,4 +171,3 @@ position = Vector2( 3948.96, 148.145 )
 [connection signal="playerEnteredFan" from="Fans/Fan2/Fan" to="Player/Player" method="_on_Fan_playerEnteredFan"]
 [connection signal="leverIsPressed" from="Fans/Fan3/Lever" to="Fans/Fan3/Fan" method="_on_Lever_leverIsPressed"]
 [connection signal="playerEnteredFan" from="Fans/Fan3/Fan" to="Player/Player" method="_on_Fan_playerEnteredFan"]
-[connection signal="checkpointChecked" from="Checkpoint" to="Player/Player" method="_on_Checkpoint_checkpointChecked"]

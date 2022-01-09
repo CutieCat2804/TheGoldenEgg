@@ -160,9 +160,10 @@ func _on_LavaSplash_animation_finished():
 func _on_Enemy_playerGotHurt():
 	velocity.y = -700
 	$CollisionShape2D.set_deferred("disabled", true)
-	playerSprite.play("idle")
+	playerSprite.play("dead")
 	self.collision_mask = 0
 	self.collision_layer = 0
+	self.z_index = 2
 	playerDeath()
 
 # Signal von der FallZone  aus
@@ -190,6 +191,7 @@ func playerDeath():
 		$CollisionShape2D.set_deferred("disabled", false)
 		self.collision_mask = 127
 		self.collision_layer = 1
+		self.z_index = 0
 		gotHurt = false
 		# sendet Signal an das HUD, um dort das Leben richtig anzuzeigen
 		emit_signal("looseLife")
@@ -217,6 +219,3 @@ func _on_Checkpoint_checkpointChecked():
 func _on_Fan_playerEnteredFan(_playerEnteredFan, _fanDirection):
 	playerEnteredFan = _playerEnteredFan
 	fanDirection = _fanDirection
-
-
-

@@ -37,5 +37,5 @@ func _physics_process(_delta):
 
 # Signal kommt von der Area2D, die den Damage checkt
 func _on_DamageChecker_body_entered(_body):
-	print("_on_DamageChecker_body_entered")
+	# Signal geht zum Player
 	emit_signal("playerGotHurt")

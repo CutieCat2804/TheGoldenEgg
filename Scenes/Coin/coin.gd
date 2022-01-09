@@ -2,11 +2,18 @@ extends Area2D
 
 signal coin_collected
 
+export var playAnimation = true
+
+func _ready():
+	if playAnimation:
+		$AnimationPlayer.play("bounce")
+	
 # wird ausgeführt, wenn der Player den Coin berührt
 # spielt die Collect Animation und Sound ab
 # sendet ein Custom Signal an HUD, um mitzuteilen, dass ein Coin eingesammelt wurde
 func _on_coin_body_entered(_body):
-	$AnimationPlayer.play("collect")
+	if playAnimation:
+		$AnimationPlayer.play("collect")
 	$CoinSound.play()
 	emit_signal("coin_collected")
 	# verhindert, dass der Coin mehrmals eingesammelt werden kann

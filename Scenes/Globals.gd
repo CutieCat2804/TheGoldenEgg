@@ -5,11 +5,11 @@ var m
 var s
 var ms
 
-var doubleJumpActive
+var doubleJumpActive = false
 var life
 var level
 var coinCount
-var levelNumber
+var levelNumber = 1
 
 func _ready():
 	highscore = "-------"
@@ -35,5 +35,6 @@ var levelParameters = [
 		{ "doubleJump": false, "highscore": "-------", "parameters": "Jetpack", "sprite": "Beige" }, 
 		{ "doubleJump": true, "highscore": "-------", "parameters": "Gegnersteine", "sprite": "Beige" },
 		{ "doubleJump": false, "highscore": "-------", "parameters": "Ventilatoren + Schalter", "sprite": "Beige" },
-		{ "doubleJump": false, "highscore": "-------", "parameters": "Feuerbälle","sprite": "Brown" }
+		{ "doubleJump": false, "highscore": "-------", "parameters": "Feuerbälle","sprite": "Brown" },
+		{ "doubleJump": false, "highscore": "-------", "parameters": "Portale","sprite": "Brown" }
 	]

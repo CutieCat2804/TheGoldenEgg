@@ -124,10 +124,10 @@ __meta__ = {
 [node name="TimerLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -68.0
-margin_top = 32.0
-margin_right = 68.0
-margin_bottom = 83.0
+margin_left = -565.812
+margin_top = 104.96
+margin_right = -429.812
+margin_bottom = 155.96
 custom_fonts/font = SubResource( 5 )
 text = "00:00:00"
 align = 1

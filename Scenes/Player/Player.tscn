@@ -49,11 +49,6 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ) ],
-"loop": true,
-"name": "dead",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "walk",
@@ -64,9 +59,9 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "flyJetpack",
+"name": "walkJetpack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -74,27 +69,27 @@ animations = [ {
 "name": "idleJetpack",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 12 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "flyJetpack",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "jumpJetpack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 21 ) ],
 "loop": true,
-"name": "walkJetpack",
+"name": "dead",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 32 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": true,
-"name": "dead",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 39 ), ExtResource( 27 ), ExtResource( 28 ) ],
@@ -107,9 +102,9 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 41 ), ExtResource( 26 ) ],
+"frames": [ ExtResource( 40 ), ExtResource( 22 ), ExtResource( 38 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 29 ) ],
 "loop": true,
-"name": "flyJetpack",
+"name": "walkJetpack",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ) ],
@@ -117,18 +112,23 @@ animations = [ {
 "name": "idleJetpack",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 41 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "flyJetpack",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 25 ) ],
 "loop": true,
 "name": "jumpJetpack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 40 ), ExtResource( 22 ), ExtResource( 38 ), ExtResource( 31 ), ExtResource( 33 ), ExtResource( 29 ) ],
+"frames": [ ExtResource( 24 ) ],
 "loop": true,
-"name": "walkJetpack",
+"name": "dead",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 40.1162
 height = 47.4653
 
@@ -147,12 +147,12 @@ animation = "dead"
 
 [node name="Brown" type="AnimatedSprite" parent="."]
 visible = false
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "dead"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 7.7782, 2.82841 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="DeathTimer" type="Timer" parent="."]
 
